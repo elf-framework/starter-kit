@@ -12,7 +12,7 @@ export function Site({ layout, page: CurrentPage, filename, ...props }) {
   }
 
   return (
-    <CurrentLayout>
+    <CurrentLayout {...props}>
       {(menu) => {
         let content = <CurrentPage menu={menu} {...props} />;
 

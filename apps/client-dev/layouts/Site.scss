@@ -18,8 +18,9 @@ html,body {
     }
 
     @media (max-width: 900px) {
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 0px;
+        padding-right: 0px;
+        width: 100%;
     }
 
     @media (max-width: 600px) {
@@ -44,6 +45,7 @@ html,body {
 
     > * {
         width: 980px;
+        margin: 0 auto;
         max-width: 100%;
         text-align: left;
     }

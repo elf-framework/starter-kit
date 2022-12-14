@@ -1,19 +1,23 @@
 import { isFunction } from "@elf-framework/sapa";
-import { View } from "@elf-framework/ui";
+import { makeCssVariablePrefixMap, propertyMap, View } from "@elf-framework/ui";
 
 import "./BlankLayout.scss";
 
 import { useTheme } from "~/hooks/useTheme";
 
+const cssProperties = makeCssVariablePrefixMap("--blank-layout", {
+  contentBackgroundColor: true,
+});
+
 export function BlankLayout(props) {
-  const { content, maxWidth = 1200 } = props;
+  const { content, style = {} } = props;
 
   useTheme();
 
   return (
-    <div class="blank-layout">
+    <div class="blank-layout" style={propertyMap(style, cssProperties)}>
       <View class="layout-content">
-        <div style={{ margin: "0px auto", maxWidth }} class="markdown-body">
+        <div class="container-lg">
           {content.map((it) => {
             return isFunction(it) ? it([]) : it;
           })}

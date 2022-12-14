@@ -1,0 +1,108 @@
+
+// @import "github-markdown-css/github-markdown.css";
+// @import "github-markdown-css/github-markdown-light.css";
+// @import "../component/utils/prism/themes/prism-vsc-dark-plus.css";
+// @import "../component/utils/prism/rehype-prism-plus/prism-plus.css";
+
+.blog-layout {
+    .layout-header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 16px 32px;
+        text-align: left;
+        border-bottom: 1px solid var(--color-gray-1);
+
+        > * {
+            width: 100%;
+        }
+    }
+
+    .application-main {
+        .navigation {
+            display: flex;
+            align-items: center;
+            // justify-content: space-between;
+            // padding: 16px 32px;
+            height: 55px;
+            box-sizing: border-box;
+            border-bottom: 1px solid var(--color-gray-1);
+        }
+
+        .application-content {
+            padding: 0px 32px;
+            display: flex;
+            min-height: 90vh;
+
+            @media (max-width: 900px) {
+                padding: 0px;
+            }
+        }
+
+        .blog-area {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-height: 100vh;
+            border: 1px solid var(--color-gray-1);
+            border-top: 0px;
+            border-bottom: 0px;
+            padding: 0px 40px;
+            // box-shadow: 0px 0px 10px 0px var(--color-gray-1), 0px 0px 10px 1px var(--color-gray-1), 0px 0px 10px 1px var(--color-gray-2);
+
+            @media (max-width: 900px) {
+                padding: 0px 30px;
+            }
+        }
+
+        .blog-header {
+            .blog-title {
+                font-size: 2.5rem;
+                font-weight: 700;
+                line-height: 1.2;
+                padding: 30px 0px;
+                margin-top: 50px;
+            }
+
+            .blog-account {
+                display: flex;
+                margin: 10px 0px;
+
+                align-items: center;
+                gap: 20px;
+                font-size: 1.2rem;
+                font-weight: 500;
+                justify-content: space-between;
+
+                > *:first-child {
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                }
+            }
+
+            .blog-date {
+                font-size: 1rem;
+                font-weight: 400;
+            }
+
+            .blog-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin: 10px 0px;
+            }
+        }
+
+
+        .blog-content {
+            padding: 10px 0px;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+
+    }
+    
+}

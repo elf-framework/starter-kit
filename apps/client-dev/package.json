@@ -1,0 +1,50 @@
+{
+  "name": "client-dev",
+  "version": "1.0.39",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "npm-check": "npx npm-check-updates -u",
+    "vite:dev": "vite --port=3001 --open  --config=vite.dev.config.js",
+    "client:dev": "npm run vite:dev",
+    "vite:prod": "vite build --config=vite.prod.config.js && npm run copy:resource",
+    "client:build": "npm run vite:prod",
+    "vite:preview": "vite preview --config=vite.prod.config.js",
+    "copy:resource": "cp CNAME ../../docs/",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix pages",
+    "format": "prettier .  --write"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@elf-framework/color": "^0.0.69",
+    "@elf-framework/design-system": "^0.0.113",
+    "@elf-framework/design-tokens": "^0.0.113",
+    "@elf-framework/icon": "^0.0.12",
+    "@elf-framework/sapa": "^0.0.107",
+    "@elf-framework/ui": "^0.0.113",
+    "github-markdown-css": "^5.1.0",
+    "mermaid": "^9.2.2"
+  },
+  "devDependencies": {
+    "@elf-framework/config": "*",
+    "@mdx-js/rollup": "^2.1.5",
+    "autoprefixer": "^10.4.13",
+    "chokidar": "^3.5.3",
+    "front-matter": "^4.0.2",
+    "glob": "^8.0.3",
+    "mdx-mermaid": "^2.0.0-rc1",
+    "mdx-prism": "^0.3.4",
+    "postcss": "^8.4.19",
+    "rehype-prism-plus": "^1.5.0",
+    "remark-frontmatter": "^4.0.1",
+    "remark-gfm": "^3.0.1",
+    "remark-mdx-frontmatter": "^2.1.1",
+    "sass": "^1.56.2",
+    "vite": "^4.0.0",
+    "vite-plugin-sapa": "^0.0.10",
+    "vitest": "0.25.6"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "name": "@elf-framework/starter-kit",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "npm-check": "turbo run npm-check --parallel",
+    "dev": "turbo run dev --parallel --profile",
+    "ssr:dev": "turbo run ssr:dev --parallel",
+    "client:dev": "turbo run client:dev --parallel",
+    "client:build": "turbo run client:build --parallel",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "prerelease": "npm run build",
+    "release": "changeset publish",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "@changesets/changelog-git": "^0.1.12",
+    "@changesets/changelog-github": "^0.4.6",
+    "@changesets/cli": "^2.24.3",
+    "eslint": "^8.22.0",
+    "prettier": "latest",
+    "turbo": "latest"
+  },
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=14.0.0"
+  },
+  "packageManager": "npm@8.9.0",
+  "description": "This is a starter kit that allows you to easily start elf framework.",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elf-framework/starter-kit.git"
+  },
+  "keywords": [
+    "elf",
+    "framework",
+    "starter",
+    "kit"
+  ],
+  "author": "elf-framework",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elf-framework/starter-kit/issues"
+  },
+  "homepage": "https://github.com/elf-framework/starter-kit#readme"
+}

@@ -1,0 +1,107 @@
+
+// @import "github-markdown-css/github-markdown.css";
+@import "github-markdown-css/github-markdown-light.css";
+@import "~/component/utils/prism/themes/prism-vsc-dark-plus.css";
+@import "~/component/utils/prism/rehype-prism-plus/prism-plus.css";
+
+
+.sidebar-layout {
+
+    .layout-content {
+        padding: 50px 10px;
+        min-height: 100vh;
+        // max-width: 800px;
+
+        > * {
+            padding: 20px;
+            padding-top: 30px;
+        }
+    }
+
+    .layout-tools {
+        padding: 8px 0px;
+        .page-tools {
+            justify-content: center;
+        }
+    }
+}
+
+.sidebar-layout {
+
+    --layout-menu-width: 260px;
+    --layout-header-height: 0;
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .layout-menu {
+        border-right: 1px solid var(--color-border);
+        position: fixed;
+        left: 0px;
+        width: var(--layout-menu-width);
+        bottom: 0px;
+        top: var(--layout-header-height);
+        overflow-y: auto;
+        overflow-x: none;
+        z-index: var(--z-index-header);
+        box-sizing: border-box;
+        // padding: 20px 20px;
+        background-color: var(--color-background-default);
+        display: flex;
+        flex-direction: column;
+
+        .logo-area {
+            flex: none;
+            // height: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            padding: 20px 20px;
+            justify-content: space-between;
+
+        }
+
+        .sidebar-area {
+            position: relative;
+            flex: 1 1 auto;
+        }
+    }
+
+    .layout-content {
+        position: relative;
+        padding-left: var(--layout-menu-width);
+        padding-top: var(--layout-header-height);
+        // padding-right: 100px;
+    }
+
+    .layout-logo {
+        justify-content: center;
+        align-items: center;
+        font-size: var(--font-size-100);
+        font-weight: bold;
+    }
+}
+
+@media (max-width: 900px) { 
+    .sidebar-layout {
+        --layout-header-height: 48px;
+        position: static;
+        display: block;
+        .layout-logo {
+            display: none;
+        }
+
+        .layout-menu {
+            display: none;
+        }
+
+        .layout-content {
+            padding: 20px !important;
+            padding-top: var(--layout-header-height);
+        }
+    }
+}

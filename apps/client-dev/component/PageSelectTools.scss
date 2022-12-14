@@ -1,0 +1,26 @@
+.page-select-tools {
+    padding: 10px 20px;
+    select.select {
+        width: 100%;
+        padding: 10px;
+        appearance: none;
+        color: var(--color-text-default);
+        background-color: var(--color-background-default);
+        border-radius: 4px;
+        border: 1px solid var(--color-border);
+        cursor: pointer;
+
+        &:hover {
+            outline: none;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:active {
+            outline: none;
+        }
+    }
+
+}

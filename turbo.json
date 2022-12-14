@@ -1,0 +1,49 @@
+{
+  "pipeline": {
+    "watch": {
+      "dependsOn": ["^watch"],
+      "outputs": ["dist/**", ".next/**"]
+    },    
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "dependsOn": ["watch"],
+      "cache": false
+    },
+    "client:watch": {
+      "dependsOn": [
+        "^client:watch"
+      ],
+      "outputs": ["dist/**", ".next/**"],
+      "cache": false
+    },    
+    "client:dev": {
+      "dependsOn": ["client:watch"],
+      "cache": false
+    },
+    "client:build": {
+      "dependsOn": ["^client:build"],
+      "outputs": ["dist/**", ".next/**"]
+    },    
+    "ssr:watch": {
+      "dependsOn": [
+        "^ssr:watch"
+      ],
+      "outputs": ["dist/**", ".next/**"],
+      "cache": false
+    },    
+    "ssr:dev": {
+      "dependsOn": ["ssr:watch"],
+      "cache": false
+    },    
+    "npm-check": {
+      "dependsOn": ["^npm-check"],
+      "cache": false
+    }
+  }
+}

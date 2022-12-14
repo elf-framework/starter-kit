@@ -1,3 +1,4 @@
+import { isFunction } from "@elf-framework/sapa";
 import { Flex, View } from "@elf-framework/ui";
 
 import "./DocumentLayout.scss";
@@ -40,7 +41,9 @@ export function DocumentLayout(props) {
       </div>
       <View class="layout-menu">{sidebar}</View>
       <View class="layout-content">
-        {content}
+        {content.map((it) => {
+          return isFunction(it) ? it(menu) : it;
+        })}
         {/* <Footer /> */}
       </View>
     </div>

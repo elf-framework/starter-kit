@@ -1,3 +1,4 @@
+import { isFunction } from "@elf-framework/sapa";
 import { View } from "@elf-framework/ui";
 
 import { Logo } from "./Logo";
@@ -36,7 +37,9 @@ export function SimpleLayout(props) {
         <div class="sidebar-area">{sidebar}</div>
       </View>
       <View class="layout-content">
-        {content}
+        {content.map((it) => {
+          return isFunction(it) ? it(menu) : it;
+        })}
         {/* <Footer /> */}
       </View>
     </div>

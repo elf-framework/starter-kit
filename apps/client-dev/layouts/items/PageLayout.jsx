@@ -1,3 +1,4 @@
+import { isFunction } from "@elf-framework/sapa";
 import { Flex } from "@elf-framework/ui";
 
 import { Logo } from "./Logo";
@@ -46,9 +47,9 @@ export function PageLayout(props) {
           </div>
           <div class="application-content">
             <div class="container-lg">
-              <div style={{ margin: "0 auto" }} class="markdown-body">
-                {content}
-              </div>
+              {content.map((it) => {
+                return isFunction(it) ? it(menu) : it;
+              })}
             </div>
           </div>
         </main>

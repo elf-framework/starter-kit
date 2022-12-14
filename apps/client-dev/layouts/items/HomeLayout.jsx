@@ -1,3 +1,4 @@
+import { isFunction } from "@elf-framework/sapa";
 import { Blank, Button } from "@elf-framework/ui";
 
 import "./HomeLayout.scss";
@@ -9,7 +10,7 @@ import mainMenus from "~/constants/main-menus";
 import { useTheme } from "~/hooks/useTheme";
 import { url } from "~/utils/url";
 
-export function HomeLayout({ content }) {
+export function HomeLayout({ content, menu = [] }) {
   useTheme();
 
   return (
@@ -58,7 +59,11 @@ export function HomeLayout({ content }) {
         </section>
       </div>
       <div class="layout-content">
-        <section>{content}</section>
+        <section>
+          {content.map((it) => {
+            return isFunction(it) ? it(menu) : it;
+          })}
+        </section>
       </div>
       <div class="layout-footer">
         <Footer />

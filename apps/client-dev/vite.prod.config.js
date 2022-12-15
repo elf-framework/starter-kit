@@ -34,7 +34,10 @@ export default defineConfig(async () => {
       jsxFragment: "FragmentInstance",
       jsxInject: `import { createElementJsx, FragmentInstance } from "@elf-framework/sapa"`,
     },
+    ssr: true,
     build: {
+      minify: false,
+      emptyOutDir: true,
       outDir: path.join(__dirname, "../../docs"),
       rollupOptions: {
         input: {

@@ -57,6 +57,60 @@ function removeFile(file) {
   }
 }
 
+function wrapTime(info) {
+  const newInfo = Object.assign(
+    {
+      createdAt: new Date().getTime(),
+    },
+    info,
+    {
+      updatedAt: new Date().getTime(),
+    }
+  );
+
+  return JSON.stringify(newInfo, null, 4);
+}
+
+function makeMetaTags({ meta: metaResult = {} }) {
+  const metaTags = [];
+
+  Object.keys(metaResult).forEach((key) => {
+    const value = metaResult[key];
+    switch (key) {
+      case "ldjson":
+        metaTags.push(
+          `<script type="application/ld+json">${JSON.stringify(value)}</script>`
+        );
+        break;
+      case "title":
+        metaTags.push(`<title>${value}</title>`);
+        break;
+      case "og":
+        Object.keys(value).forEach((ogKey) => {
+          metaTags.push(
+            `<meta property="og:${ogKey}" content="${value[ogKey]}" />`
+          );
+        });
+        break;
+      case "link":
+        value.forEach((link) => {
+          const attributes = Object.entries(link)
+            .map(([key, value]) => {
+              return `${key}="${value}"`;
+            })
+            .join(" ");
+          metaTags.push(`<link ${attributes} />`);
+        });
+        break;
+      default:
+        metaTags.push(`<meta name="${key}" content="${value}" />`);
+        break;
+    }
+  });
+
+  return metaTags.join("\r\n\t\t");
+}
+
 // entryFilePath: realPath
 // file: relative path
 function generateMarkdownMetaFile(entryRelativeFileName, entryFilePath) {
@@ -67,11 +121,12 @@ function generateMarkdownMetaFile(entryRelativeFileName, entryFilePath) {
   const metaFile = getMetaFilePath(entryFilePath);
 
   let metaResult = mdxResult.attributes;
+
   if (metaResult) {
     // meta auto generate
 
     if (existsSync(metaFile) === false) {
-      writeContent(metaFile, JSON.stringify(metaResult));
+      writeContent(metaFile, wrapTime(metaResult));
     }
   } else {
     metaResult = {
@@ -101,7 +156,7 @@ function generateMarkdownMetaFile(entryRelativeFileName, entryFilePath) {
   }
 
   if (hasChangedMetaInfo) {
-    writeContent(metaFile, JSON.stringify(metaResult));
+    writeContent(metaFile, wrapTime(metaResult));
 
     // update mdx frontmatter
 
@@ -119,20 +174,23 @@ ${mdxResult.body}`;
   }
 
   // meta 정보 읽어서 다시 갱신
-  const { title, description, keywords, layout } = metaResult;
   const metaContent = readContent(metaFile);
-  const oldMetaResult = JSON.parse(metaContent);
+  const localMetaResult = JSON.parse(metaContent);
 
-  if (
-    oldMetaResult.title !== title ||
-    oldMetaResult.description !== description ||
-    oldMetaResult.keywords !== keywords ||
-    oldMetaResult.layout !== layout
-  ) {
-    writeContent(metaFile, JSON.stringify(metaResult));
-  }
+  // if (JSON.stringify(metaResult) !== metaContent) {
+  writeContent(
+    metaFile,
+    wrapTime({
+      ...localMetaResult,
+      ...metaResult,
+    })
+  );
+  // }
 
-  return metaResult;
+  return {
+    ...metaResult,
+    body: mdxResult.body,
+  };
 }
 
 function generateHtmlFile(realpath) {
@@ -162,15 +220,22 @@ function generateHtmlFile(realpath) {
       entryExtName
     );
 
-    const { title, keywords, description } = meta;
+    const { ldjson = {} } = meta;
 
     // create index.html file
     let content = indexTemplate;
 
-    // title auto generate
-    content = content.replace("{{title}}", title);
-    content = content.replace("{{keywords}}", keywords);
-    content = content.replace("{{description}}", description);
+    // meta auto generate
+    content = content.replace("{{meta}}", makeMetaTags(meta));
+
+    content = content.replace(
+      "{{ldjson}}",
+      JSON.stringify({
+        "@context": "https://json-ld.org/contexts/person.jsonld",
+        ...ldjson,
+      })
+    );
+
     content = content.replace(
       "{{entryFileName}}",
       "./" + entryFileName + ".jsx"
@@ -201,8 +266,14 @@ function generateHtmlFile(realpath) {
       entryBaseName === "index"
         ? ucwords(basename(entryDirName))
         : ucwords(entryBaseName);
-    // title auto generate
-    content = content.replace("{{title}}", title);
+    // meta auto generate
+    content = content.replace(
+      "{{meta}}",
+      makeMetaTags({
+        title,
+      })
+    );
+
     content = content.replace(
       "{{entryFileName}}",
       "./" + entryFileName + entryExtName
@@ -234,7 +305,7 @@ export function mdxGenerator() {
   let watcher;
   return [
     {
-      name: "sapa-router",
+      name: "mdx-generator",
       enforce: "pre",
       async config(config) {
         // const entries = makeIndexEntries();
@@ -252,8 +323,6 @@ export function mdxGenerator() {
         command = resolvedConfig.command;
       },
       buildStart() {
-        // makeIndexEntries();
-
         if (command === "serve") {
           const watchDirFullPath = path.join(
             rootDir,
@@ -271,7 +340,7 @@ export function mdxGenerator() {
               console.log("File", path, "has been added");
               generateHtmlFile(path);
             })
-            .on("change", function (path) {
+            .on("change", async function (path) {
               if (isPagesDirectory(path) === false) return;
               //   console.log("File", path, "has been changed");
               generateHtmlFile(path);

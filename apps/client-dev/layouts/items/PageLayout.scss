@@ -9,11 +9,16 @@
         height: 60px;
         display: flex;
         align-items: center;
-        gap: 20px;
         padding: 16px 32px;
         background-color: var(--color-gray-0);
-        > * {
-            flex: 1 1 auto;
+
+        .layout-tools {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex: 1;
+
+            gap: 30px;
         }
     }
 
@@ -22,7 +27,7 @@
             display: flex;
             align-items: center;
             // justify-content: space-between;
-            // padding: 16px 32px;
+            padding: 16px 32px;
             height: 55px;
             box-sizing: border-box;
             border-bottom: 1px solid var(--color-gray-1);

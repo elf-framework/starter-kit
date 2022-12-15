@@ -1,1 +1,17 @@
-{"title":"Getting Started - Hello World","date":"2022-12-15T00:00:00.000Z","layout":"BlogReadLayout"}
+{
+    "createdAt": 1671072784171,
+    "title": "블로그를  처음 적어보아요.",
+    "date": "2022-12-16T00:00:00.000Z",
+    "layout": "BlogReadLayout",
+    "tags": [
+        "hello",
+        "world",
+        "blog",
+        "elf"
+    ],
+    "account": {
+        "imageUrl": "https://avatars.githubusercontent.com/u/1234567?v=4",
+        "name": "elf"
+    },
+    "updatedAt": 1671073785215
+}

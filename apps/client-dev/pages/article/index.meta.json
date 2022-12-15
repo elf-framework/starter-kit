@@ -1,1 +1,9 @@
-{"title":"Article","layout":"ArticleLayout"}
+{
+    "createdAt": 1671084222861,
+    "title": "Article",
+    "layout": "ArticleLayout",
+    "tableOfContents": false,
+    "menuLink": false,
+    "editableSourceLink": false,
+    "updatedAt": 1671095029018
+}

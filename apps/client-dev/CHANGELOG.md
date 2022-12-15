@@ -1,5 +1,13 @@
 # client-dev
 
+## 1.0.41
+
+### Patch Changes
+
+- support meta tag by frontmatter
+  support EmbededLayout
+  support layout alias
+
 ## 1.0.40
 
 ### Patch Changes

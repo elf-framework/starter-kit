@@ -1,0 +1,21 @@
+{
+    "createdAt": 1671084657283,
+    "title": "Embeded",
+    "layout": "EmbededReadLayout",
+    "updatedAt": 1671094934719,
+    "og": {
+        "image": "/images/og-image.png",
+        "title": "Embeded"
+    },
+    "ldjson": {
+        "@type": "Recipe",
+        "name": "Party Coffee Cake",
+        "author": {
+            "@type": "Person",
+            "name": "Mary Stone"
+        },
+        "datePublished": "2018-03-10",
+        "description": "This coffee cake is awesome and perfect for parties.",
+        "prepTime": "PT20M"
+    }
+}

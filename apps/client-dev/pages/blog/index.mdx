@@ -1,0 +1,21 @@
+---
+title: 최신 블로그 리스트 
+layout: BlogReadLayout
+---
+
+import currentBlogList from '~/data/current-blog-list';
+
+<div>
+{currentBlogList.map((blog) => (
+    <div>
+        <h2><a href={blog.link}>{blog?.title}</a> &nbsp;
+            {blog.date ? 
+                <small style={{color: "var(--color-gray-5)", fontSize: "1rem"}}>
+                    {new Intl.DateTimeFormat('en-US').format(new Date(blog?.date))}
+                </small> 
+                : undefined
+            }
+        </h2>
+    </div>
+))}
+</div>

@@ -1,6 +1,6 @@
 {
   "name": "client-dev",
-  "version": "1.0.40",
+  "version": "1.0.41",
   "private": true,
   "description": "",
   "main": "index.js",
@@ -45,6 +45,7 @@
     "sass": "^1.56.2",
     "vite": "^4.0.1",
     "vite-plugin-sapa": "^0.0.10",
+    "vite-plugin-ssr": "^0.4.60",
     "vitest": "0.25.8"
   }
 }

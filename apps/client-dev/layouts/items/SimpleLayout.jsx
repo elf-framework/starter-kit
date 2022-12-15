@@ -37,9 +37,12 @@ export function SimpleLayout(props) {
         <div class="sidebar-area">{sidebar}</div>
       </View>
       <View class="layout-content">
-        {content.map((it) => {
-          return isFunction(it) ? it(menu) : it;
-        })}
+        <div>
+          {content.map((it) => {
+            return isFunction(it) ? it(menu) : it;
+          })}
+        </div>
+
         {/* <Footer /> */}
       </View>
     </div>

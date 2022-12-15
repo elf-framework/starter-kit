@@ -33,10 +33,12 @@ export function PageLayout(props) {
   return (
     <div class={`page-layout ${className}`}>
       <div class="layout-header">
-        <Flex class={`layout-tools`}>
-          {logo}
-          {toolbar}
-        </Flex>
+        <div class="container-lg">
+          <Flex class={`layout-tools`}>
+            {logo}
+            {toolbar}
+          </Flex>
+        </div>
       </div>
       <div class="application-main">
         <main>

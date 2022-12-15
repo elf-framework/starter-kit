@@ -32,6 +32,7 @@ export default defineConfig(async () => {
       jsxInject: `import { createElementJsx, FragmentInstance } from "@elf-framework/sapa"`,
     },
     build: {
+      minify: false,
       manifest: true,
       rollupOptions: {
         input: {

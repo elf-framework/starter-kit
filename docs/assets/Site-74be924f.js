@@ -11694,7 +11694,7 @@ function SimpleLayout(props) {
   toolbar = toolbar || /* @__PURE__ */ createElementJsx(PageSelectTools, { menu: menu2 });
   sidebar = sidebar || /* @__PURE__ */ createElementJsx(Navigation, { menu: menu2 });
   useTheme();
-  return /* @__PURE__ */ createElementJsx("div", { class: `sidebar-layout layout ${className}` }, /* @__PURE__ */ createElementJsx(View, { class: "layout-menu" }, /* @__PURE__ */ createElementJsx("div", { class: "logo-area" }, logo, /* @__PURE__ */ createElementJsx(ThemeButton, null)), /* @__PURE__ */ createElementJsx("div", { class: "tools-area" }, toolbar), /* @__PURE__ */ createElementJsx("div", { class: "sidebar-area" }, sidebar)), /* @__PURE__ */ createElementJsx(View, { class: "layout-content" }, /* @__PURE__ */ createElementJsx("div", null, content.map((it) => {
+  return /* @__PURE__ */ createElementJsx("div", { class: `simple-layout layout ${className}` }, /* @__PURE__ */ createElementJsx(View, { class: "layout-menu" }, /* @__PURE__ */ createElementJsx("div", { class: "logo-area" }, logo, /* @__PURE__ */ createElementJsx(ThemeButton, null)), /* @__PURE__ */ createElementJsx("div", { class: "tools-area" }, toolbar), /* @__PURE__ */ createElementJsx("div", { class: "sidebar-area" }, sidebar)), /* @__PURE__ */ createElementJsx(View, { class: "layout-content" }, /* @__PURE__ */ createElementJsx("div", null, content.map((it) => {
     return isFunction(it) ? it(menu2) : it;
   }))));
 }

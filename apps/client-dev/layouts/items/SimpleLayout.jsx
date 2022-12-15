@@ -1,5 +1,5 @@
 import { isFunction } from "@elf-framework/sapa";
-import { View } from "@elf-framework/ui";
+import { makeCssVariablePrefixMap, propertyMap, View } from "@elf-framework/ui";
 
 import { Logo } from "./Logo";
 import "./SimpleLayout.scss";
@@ -8,6 +8,10 @@ import { Navigation } from "~/component/Navigation";
 import { PageSelectTools } from "~/component/PageSelectTools";
 import { ThemeButton } from "~/component/utils/theme-button/ThemeButton";
 import { useTheme } from "~/hooks/useTheme";
+
+const cssProperties = makeCssVariablePrefixMap("--simple-layout", {
+  sidebarWidth: true,
+});
 
 export function SimpleLayout(props) {
   let {
@@ -18,6 +22,9 @@ export function SimpleLayout(props) {
     sidebar = undefined,
     title = "",
     class: className = "",
+    showLogo = true,
+    showTools = true,
+    style = {},
   } = props;
 
   logo = logo || <Logo title={title} />;
@@ -27,13 +34,18 @@ export function SimpleLayout(props) {
   useTheme();
 
   return (
-    <div class={`sidebar-layout layout ${className}`}>
+    <div
+      class={`simple-layout layout ${className}`}
+      style={propertyMap(style, cssProperties)}
+    >
       <View class="layout-menu">
-        <div class="logo-area">
-          {logo}
-          <ThemeButton />
-        </div>
-        <div class="tools-area">{toolbar}</div>
+        {showLogo ? (
+          <div class="logo-area">
+            {logo}
+            <ThemeButton />
+          </div>
+        ) : undefined}
+        {showTools ? <div class="tools-area">{toolbar}</div> : undefined}
         <div class="sidebar-area">{sidebar}</div>
       </View>
       <View class="layout-content">

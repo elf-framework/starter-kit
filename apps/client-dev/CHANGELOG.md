@@ -1,5 +1,11 @@
 # client-dev
 
+## 1.0.43
+
+### Patch Changes
+
+- modify SimpleLayout properties (showLogo, showTools)
+
 ## 1.0.42
 
 ### Patch Changes

@@ -2888,25 +2888,25 @@ pre {
     content: attr(line);
   }
 
-.sidebar-layout .layout-content {
+.simple-layout .layout-content {
   padding: 50px 10px;
   min-height: 100vh;
 }
 
-.sidebar-layout .layout-content > * {
+.simple-layout .layout-content > * {
   padding: 20px;
   padding-top: 30px;
 }
 
-.sidebar-layout .layout-tools {
+.simple-layout .layout-tools {
   padding: 8px 0px;
 }
 
-.sidebar-layout .layout-tools .page-tools {
+.simple-layout .layout-tools .page-tools {
   justify-content: center;
 }
 
-.sidebar-layout {
+.simple-layout {
   --layout-menu-width: 260px;
   --layout-header-height: 0;
   display: block;
@@ -2917,7 +2917,7 @@ pre {
   bottom: 0;
 }
 
-.sidebar-layout .layout-menu {
+.simple-layout .layout-menu {
   border-right: 1px solid var(--color-border);
   position: fixed;
   left: 0px;
@@ -2933,7 +2933,7 @@ pre {
   flex-direction: column;
 }
 
-.sidebar-layout .layout-menu .logo-area {
+.simple-layout .layout-menu .logo-area {
   flex: none;
   text-align: center;
   display: flex;
@@ -2942,18 +2942,18 @@ pre {
   justify-content: space-between;
 }
 
-.sidebar-layout .layout-menu .sidebar-area {
+.simple-layout .layout-menu .sidebar-area {
   position: relative;
   flex: 1 1 auto;
 }
 
-.sidebar-layout .layout-content {
+.simple-layout .layout-content {
   position: relative;
   padding-left: var(--layout-menu-width);
   padding-top: var(--layout-header-height);
 }
 
-.sidebar-layout .layout-logo {
+.simple-layout .layout-logo {
   justify-content: center;
   align-items: center;
   font-size: var(--font-size-100);
@@ -2961,18 +2961,18 @@ pre {
 }
 
 @media (max-width: 900px) {
-  .sidebar-layout {
+  .simple-layout {
     --layout-header-height: 48px;
     position: static;
     display: block;
   }
-  .sidebar-layout .layout-logo {
+  .simple-layout .layout-logo {
     display: none;
   }
-  .sidebar-layout .layout-menu {
+  .simple-layout .layout-menu {
     display: none;
   }
-  .sidebar-layout .layout-content {
+  .simple-layout .layout-content {
     padding: 20px !important;
     padding-top: var(--layout-header-height);
   }

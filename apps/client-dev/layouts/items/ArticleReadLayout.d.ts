@@ -1,12 +1,12 @@
 import type { UIElement } from "@elf-framework/sapa";
 import type { ContentType } from "@elf-framework/ui";
 
-interface SimpleLayoutStyle {
+interface ArticleReadLayoutStyle {
   sidebarWidth?: string;
   [key: string]: string | number;
 }
 
-interface SimpleLayoutProps {
+interface ArticleReadLayoutProps {
   content?: ContentType;
   menu?: any[];
   logo?: ContentType;
@@ -44,9 +44,9 @@ interface SimpleLayoutProps {
    */
   showLogo?: boolean;
 
-  style?: SimpleLayoutStyle;
+  style?: ArticleReadLayoutStyle;
 }
 
-export class SimpleLayout extends UIElement {
-  props: SimpleLayoutProps;
+export class ArticleReadLayout extends UIElement {
+  props: ArticleReadLayoutProps;
 }

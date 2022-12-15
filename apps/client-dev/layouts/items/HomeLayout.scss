@@ -1,5 +1,7 @@
 .home-layout {
 
+    background-color: var(--home-layout-background-color);
+
     .home-layout-header {
         width :100%;
         position: relative;
@@ -11,11 +13,9 @@
             top: 0px;
             height: 100%;
             width: 100%;
-            background-image: radial-gradient(circle 800px at 700px 200px, var(--color-purple-0), #ffb0ff00), radial-gradient(circle 600px at calc(100% - 300px) 300px, var(--color-teal-0), #ffb0ff00), radial-gradient(circle 800px at right center, var(--color-blue-1), #ffb0ff00), radial-gradient(circle 800px at right bottom, var(--color-blue-0), #ffb0ff00), radial-gradient(circle 800px at calc(50% - 600px) calc(100% - 100px), var(--color-pink-1), var(--color-pink-0), #ffb0ff00);
+            // background-image: radial-gradient(circle 800px at 700px 200px, var(--color-purple-0), #ffb0ff00), radial-gradient(circle 600px at calc(100% - 300px) 300px, var(--color-teal-0), #ffb0ff00), radial-gradient(circle 800px at right center, var(--color-blue-1), #ffb0ff00), radial-gradient(circle 800px at right bottom, var(--color-blue-0), #ffb0ff00), radial-gradient(circle 800px at calc(50% - 600px) calc(100% - 100px), var(--color-pink-1), var(--color-pink-0), #ffb0ff00);
             z-index: -1;
         }
-
-
     }
 
     .layout-header {
@@ -28,8 +28,14 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-bottom: 1px solid #c4c4c5;
 
-        > .tools {
+        .container-lg {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tools {
             display: flex;
 
             ul {
@@ -69,6 +75,7 @@
         max-width: 1200px;
         margin: 0 auto;
         overflow: hidden;
+        min-height: 800px;
 
 
         @media screen and (max-width: 900px) {
@@ -81,6 +88,7 @@
         }
 
         .hero {
+            padding-top: 50px;
             font-size: 3rem;
             width: 500px;
             line-height: 1.6em;

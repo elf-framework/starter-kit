@@ -4,7 +4,7 @@ import Page, * as props from "./index.mdx";
 
 import { Site } from "~/layouts/Site";
 
-const filename = "pages/main/index.mdx";
+const filename = "pages/application/index.mdx";
 
 const site = <Site filename={filename} page={Page} {...props} />;
 

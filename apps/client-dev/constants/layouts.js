@@ -6,4 +6,5 @@ export const layouts = {
   "pages/page": "PageReadLayout",
   "pages/simple": "SimpleReadLayout",
   "pages/embeded": "EmbededReadLayout",
+  "pages/application": "ApplicationReadLayout",
 };

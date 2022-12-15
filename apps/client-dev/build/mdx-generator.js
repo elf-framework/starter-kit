@@ -297,8 +297,8 @@ const PAGE_ROOT = path.resolve(__dirname, "..");
 const PAGE_ROOT_DIR = PAGE_ROOT + "/";
 
 // load template file contents
-const indexTemplate = readContent("./template/index.html");
-const pageTemplate = readContent("./template/page.jsx");
+const indexTemplate = readContent("./build/template/index.html");
+const pageTemplate = readContent("./build/template/page.jsx");
 
 export function mdxGenerator() {
   let command, config, rootDir;

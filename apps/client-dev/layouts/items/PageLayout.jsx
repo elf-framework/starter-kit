@@ -6,6 +6,7 @@ import "./PageLayout.scss";
 
 import { Footer } from "~/component/Footer";
 import { PageTools } from "~/component/PageTools";
+import { useTheme } from "~/hooks/useTheme";
 
 function LogoView() {
   return (
@@ -29,6 +30,8 @@ export function PageLayout(props) {
   logo = logo || <LogoView title={title} />;
   toolbar = toolbar || <PageTools menu={menu} />;
   navigator = navigator || "Navigation";
+
+  useTheme();
 
   return (
     <div class={`page-layout ${className}`}>

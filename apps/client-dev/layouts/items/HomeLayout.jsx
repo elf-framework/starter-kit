@@ -1,5 +1,5 @@
 import { isFunction } from "@elf-framework/sapa";
-import { Blank, Button } from "@elf-framework/ui";
+import { Blank, Button, Divider } from "@elf-framework/ui";
 
 import "./HomeLayout.scss";
 import { Logo } from "./Logo";
@@ -18,25 +18,42 @@ export function HomeLayout({ content, menu = [] }) {
       <div class="home-layout-header">
         <div class="background"></div>
         <div class="layout-header">
-          <div>
-            <Logo />
+          <div class="container-lg">
+            <div>
+              <Logo />
+            </div>
+            <nav class="tools">
+              <ul>
+                {mainMenus.map((it) => {
+                  return (
+                    <li>
+                      <a href={it.link}>{it.title}</a>
+                    </li>
+                  );
+                })}
+                <li>
+                  <ThemeButton />
+                </li>
+              </ul>
+            </nav>
           </div>
-          <nav class="tools">
-            <ul>
-              {mainMenus.map((it) => {
-                return (
-                  <li>
-                    <a href={it.link}>{it.title}</a>
-                  </li>
-                );
-              })}
-              <li>
-                <ThemeButton />
-              </li>
-            </ul>
-          </nav>
         </div>
-        <section class="content">
+      </div>
+      <div class="layout-content">
+        <section class="content" style={{ paddingTop: 0 }}>
+          <div
+            style={{
+              fontSize: "9rem",
+              fontWeight: "bold",
+              textAlign: "center",
+              letterSpacing: "0.2rem",
+              padding: "2rem 0",
+              paddingTop: 0,
+              borderBottom: "1px solid #c4c4c4",
+            }}
+          >
+            READ &amp; WORK
+          </div>
           <div class="hero">
             <h1>Let's make the editor easy and fun.</h1>
           </div>
@@ -55,10 +72,10 @@ export function HomeLayout({ content, menu = [] }) {
               Go to introduction
             </Button>
           </div>
-          <Blank />
+
+          <Blank style={{ height: 30 }} />
+          <Divider />
         </section>
-      </div>
-      <div class="layout-content">
         <section>
           {content.map((it) => {
             return isFunction(it) ? it(menu) : it;

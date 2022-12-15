@@ -1,5 +1,11 @@
 # client-dev
 
+## 1.0.42
+
+### Patch Changes
+
+- add ApplicationLayout
+
 ## 1.0.41
 
 ### Patch Changes

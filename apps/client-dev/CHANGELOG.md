@@ -1,5 +1,11 @@
 # client-dev
 
+## 1.0.45
+
+### Patch Changes
+
+- fixed \*.page.jsx file bug
+
 ## 1.0.44
 
 ### Patch Changes

@@ -9,6 +9,7 @@ import { basename, dirname, extname } from "path";
 import {
   getHtmlFilePath,
   getJsxFilePath,
+  getLayoutByPath,
   getMetaFilePath,
   getTitle,
   makeMetaTags,
@@ -16,69 +17,11 @@ import {
   wrapTime,
   writeContent,
 } from "./utils";
+import { Visitor } from "./Visitor";
 
 // console.log(acorn, acornJsx);
 
 var JSXParser = acorn.Parser.extend(acornJsx());
-
-class Visitor {
-  start(node) {
-    this.collects = [];
-    this.visitNode(node);
-  }
-
-  /* Deal with nodes in an array */
-  visitNodes(nodes) {
-    for (const node of nodes) this.visitNode(node);
-  }
-  /* Dispatch each type of node to a function */
-  visitNode(node) {
-    // console.log(node);
-    switch (node.type) {
-      case "Program":
-        return this.visitProgram(node);
-      case "ExportNamedDeclaration":
-        return this.visitExportNamedDeclaration(node);
-      case "VariableDeclaration":
-        return this.visitVariableDeclaration(node);
-      case "VariableDeclarator":
-        return this.visitVariableDeclarator(node);
-      case "Identifier":
-        return this.visitIdentifier(node);
-      case "Literal":
-        return this.visitLiteral(node);
-    }
-  }
-  /* Functions to deal with each type of node */
-  visitExportNamedDeclaration(node) {
-    node.declaration.declarations.forEach((it) => {
-      this.collects.push({
-        [it.id.name]: it.init.value,
-      });
-    });
-    // return this.visitNode(node.declaration);
-  }
-  visitProgram(node) {
-    return this.visitNodes(node.body);
-  }
-  visitVariableDeclaration(node) {
-    return this.visitNodes(node.declarations);
-  }
-  visitVariableDeclarator(node) {
-    this.visitNode(node.id);
-    return this.visitNode(node.init);
-  }
-  visitIdentifier(node) {
-    return node.name;
-  }
-  visitLiteral(node) {
-    return node.value;
-  }
-
-  toJSON() {
-    return Object.assign(...this.collects);
-  }
-}
 
 var visitor = new Visitor();
 
@@ -97,7 +40,7 @@ var visitor = new Visitor();
  * @param {*} realpath
  * @returns
  */
-export async function makeJsxFile(rootDir, realpath) {
+export async function makeJsxFile(rootDir, realpath, options) {
   const docFile = realpath;
   const relativeDocFile = docFile.replace(rootDir, "");
 
@@ -125,33 +68,30 @@ export async function makeJsxFile(rootDir, realpath) {
   const indexTemplate = readContent("./build/template/index.html");
 
   // jsx page template
-  const startTemplate = readContent("./build/template/start.jsx");
+  const startTemplate = readContent("./build/template/page.start.jsx");
 
   // page template
   const pageTemplate = readContent("./build/template/page.jsx");
 
   // create index.html file
   const title = getTitle(entryFilePath, 1);
-
-  writeContent(htmlFile, indexTemplate, {
-    meta: makeMetaTags({
-      title,
-    }),
-    entryFileName: "./" + entryFileName + ".jsx",
-  });
+  const pageLayout = getLayoutByPath(options.layouts, entryRelativeFileName);
 
   // create start jsx
-  writeContent(startJsxFile, startTemplate, {
-    filename: entryRelativeFileName,
-    applicationFilePath: "./" + entryBaseName.replace(".jsx", ".page.jsx"),
-  });
+
+  if (existsSync(startJsxFile) === false) {
+    writeContent(startJsxFile, startTemplate, {
+      filename: entryRelativeFileName,
+      applicationFilePath: "./" + entryBaseName.replace(".jsx", ".page.jsx"),
+    });
+  }
 
   // create page jsx
   // 파일이 존재하지 않을 때만 생성
   if (existsSync(pageJsxFile) === false) {
     writeContent(pageJsxFile, pageTemplate, {
       title,
-      pageLayout: "BlankLayout",
+      pageLayout,
     });
   }
 
@@ -165,7 +105,7 @@ export async function makeJsxFile(rootDir, realpath) {
     if (!content.trim()) {
       writeContent(pageJsxFile, pageTemplate, {
         title,
-        pageLayout: "BlankLayout",
+        pageLayout,
       });
       content = readContent(pageJsxFile);
     }
@@ -176,9 +116,24 @@ export async function makeJsxFile(rootDir, realpath) {
     });
 
     visitor.start(parsed);
-    Object.assign(metaInfo, visitor.toJSON());
+    Object.assign(metaInfo, visitor.toJSON().frontmatter || {});
   }
 
+  const oldMetaInfo = makeMetaTags(JSON.parse(readContent(metaFile) || "{}"));
+  const newMetaInfo = makeMetaTags(metaInfo);
+
+  // 메타 정보가 다를 때만 xxx.html 파일을 생성한다.
+  if (oldMetaInfo !== newMetaInfo) {
+    writeContent(htmlFile, indexTemplate, {
+      meta: makeMetaTags({
+        title,
+        ...metaInfo,
+      }),
+      entryFileName: "./" + basename(startJsxFile),
+    });
+  }
+
+  // *.page.jsx 가 변경되면 meta 정보는 시간을 기록하기 위해서 항상 변경된다.
   // create meta json
   writeContent(metaFile, wrapTime(metaInfo));
 }

@@ -1,7 +1,8 @@
 import chokidar from "chokidar";
 
-import path, { basename, dirname, extname } from "path";
+import path from "path";
 
+import { layouts } from "../constants/layouts";
 import { makeJsxFile } from "./functions/makeJsxFile";
 import { makeMdxFile } from "./functions/makeMdxFile";
 // import { removeFile } from "./functions/utils";
@@ -9,12 +10,12 @@ import { makeMdxFile } from "./functions/makeMdxFile";
 function generateHtmlFile(realpath) {
   if (realpath.endsWith(".page.jsx")) {
     // *.page.jsx 파일 기준 생성
-    makeJsxFile(PAGE_ROOT_DIR, realpath);
+    makeJsxFile(PAGE_ROOT_DIR, realpath, { layouts });
   }
 
   if (realpath.endsWith(".mdx")) {
     // .mdx 파일 기준 생성
-    makeMdxFile(PAGE_ROOT_DIR, realpath);
+    makeMdxFile(PAGE_ROOT_DIR, realpath, { layouts });
   }
 }
 

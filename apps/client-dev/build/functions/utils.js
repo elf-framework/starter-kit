@@ -14,6 +14,10 @@ export function writeContent(file, content, replaceMap = {}) {
 }
 
 export function readContent(file) {
+  if (!existsSync(file)) {
+    return "";
+  }
+
   return readFileSync(file, {
     encoding: "utf-8",
   });
@@ -92,8 +96,10 @@ export function wrapTime(info) {
   return JSON.stringify(newInfo, null, 4);
 }
 
-export function makeMetaTags({ meta: metaResult = {} }) {
+export function makeMetaTags({ title, meta: metaResult = {} }) {
   const metaTags = [];
+
+  metaResult.title = metaResult.title || title;
 
   Object.keys(metaResult).forEach((key) => {
     const value = metaResult[key];
@@ -130,6 +136,17 @@ export function makeMetaTags({ meta: metaResult = {} }) {
   });
 
   return metaTags.join("\r\n\t\t");
+}
+
+export function getLayoutByPath(layouts, entryRelativeFileName) {
+  let layout = "BlankLayout"; // default layout
+  Object.entries(layouts).forEach(([key, value]) => {
+    if (entryRelativeFileName.startsWith(key)) {
+      layout = value;
+    }
+  });
+
+  return layout;
 }
 
 // entryFilePath: realPath
@@ -170,12 +187,7 @@ export function generateMarkdownMetaFile(
 
   // layout 이 없을 때는 path 에 맞는 layout 을 미리 지정한다.
   if (!metaResult.layout) {
-    metaResult.layout = "BlankLayout"; // default layout
-    Object.entries(layouts).forEach(([key, value]) => {
-      if (entryRelativeFileName.startsWith(key)) {
-        metaResult.layout = value;
-      }
-    });
+    metaResult.layout = getLayoutByPath(layouts, entryRelativeFileName);
 
     hasChangedMetaInfo = true;
   }

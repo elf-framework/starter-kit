@@ -1,3 +1,4 @@
+import { existsSync } from "fs";
 import { basename, dirname, extname } from "path";
 
 import {
@@ -10,7 +11,7 @@ import {
   writeContent,
 } from "./utils";
 
-export function makeMdxFile(rootDir, realpath) {
+export function makeMdxFile(rootDir, realpath, options = {}) {
   const docFile = realpath;
   const relativeDocFile = docFile.replace(rootDir, "");
 
@@ -26,7 +27,6 @@ export function makeMdxFile(rootDir, realpath) {
   let htmlFile = getHtmlFilePath(entryFilePath);
   let startJsxFile = getJsxFilePath(entryFilePath);
   const metaFile = getMetaFilePath(entryFilePath);
-  let layouts = {};
 
   // load template file contents
   const indexTemplate = readContent("./build/template/index.html");
@@ -39,23 +39,34 @@ export function makeMdxFile(rootDir, realpath) {
     return;
   }
 
+  const oldMetaInfo = JSON.parse(readContent(metaFile) || "{}");
+
   // mdx 일 경우 meta.json 파일을 생성한다.
   // create meta.json file
   const meta = generateMarkdownMetaFile(
     entryRelativeFileName,
     entryFilePath,
-    layouts
+    options.layouts
   );
 
-  // create index.html file
-  writeContent(htmlFile, indexTemplate, {
-    meta: makeMetaTags(meta),
-    entryFileName: "./" + entryFileName + ".jsx",
-  });
+  const oldMetaTags = makeMetaTags(oldMetaInfo);
+  const newMetaTags = makeMetaTags(meta);
 
+  // create index.html file
+  // meta 태그 기준으로 변경이 있으면 index.html 파일을 다시 생성한다.
+  if (oldMetaTags !== newMetaTags) {
+    writeContent(htmlFile, indexTemplate, {
+      meta: newMetaTags,
+      entryFileName: "./" + entryFileName + ".jsx",
+    });
+  }
+
+  // 여긴 한번 생성되면 바뀔일이 없는 듯 하다.
   // create start page jsx file
-  writeContent(startJsxFile, startTemplate, {
-    filename: entryRelativeFileName,
-    applicationFilePath: "./" + entryBaseName,
-  });
+  if (existsSync(startJsxFile) === false) {
+    writeContent(startJsxFile, startTemplate, {
+      filename: entryRelativeFileName,
+      applicationFilePath: "./" + entryBaseName,
+    });
+  }
 }

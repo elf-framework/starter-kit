@@ -1,7 +1,7 @@
 import { isFunction } from "@elf-framework/sapa";
 
-import menu from "../../constants/main-pages";
-import { DocumentLayout } from "./DocumentLayout";
+import { DocumentLayout } from "~/component/layout/document/DocumentLayout";
+import menu from "~/constants/pages/main-pages";
 
 export function MainLayout({ content, ...extraProps }) {
   return (

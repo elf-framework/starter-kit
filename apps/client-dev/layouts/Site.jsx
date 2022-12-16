@@ -11,24 +11,19 @@ export function Site({ layout, page: CurrentPage, filename, ...props }) {
     return <div>Layout not found</div>;
   }
 
+  // 기본 페이지 설정 (jsx 기반)
+  let content = <CurrentPage {...props} />;
+
+  // MDX 기반 페이지 설정
+  if (CurrentPage.name === "MDXContent") {
+    content = (
+      <MarkdownPage page={CurrentPage} filename={filename} {...props} />
+    );
+  }
+
   return (
     <CurrentLayout {...props}>
-      {(menu) => {
-        let content = <CurrentPage menu={menu} {...props} />;
-
-        if (CurrentPage.name === "MDXContent") {
-          content = (
-            <MarkdownPage
-              page={CurrentPage}
-              filename={filename}
-              menu={menu}
-              {...props}
-            />
-          );
-        }
-
-        return <div>{content}</div>;
-      }}
+      <div>{content}</div>
     </CurrentLayout>
   );
 }

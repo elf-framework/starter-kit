@@ -1,6 +1,5 @@
-import { ApplicationLayout } from "./ApplicationLayout";
-
-import menu from "~/constants/article-pages";
+import { ApplicationLayout } from "~/component/layout/application/ApplicationLayout";
+import menu from "~/constants/pages/article-pages";
 
 export function ApplicationReadLayout({ content, ...extraProps }) {
   return (

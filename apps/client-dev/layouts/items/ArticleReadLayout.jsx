@@ -1,6 +1,6 @@
-import { SimpleLayout } from "./SimpleLayout";
+import { SimpleLayout } from "../../component/layout/simple/SimpleLayout";
 
-import menu from "~/constants/article-pages";
+import menu from "~/constants/pages/article-pages";
 
 export function ArticleReadLayout({ content, ...extraProps }) {
   return (

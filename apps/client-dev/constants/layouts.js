@@ -1,3 +1,6 @@
+/**
+ * Predefined layouts for pages
+ */
 export const layouts = {
   "pages/article": "ArticleReadLayout",
   "pages/blog": "BlogReadLayout",

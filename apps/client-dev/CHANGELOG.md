@@ -1,5 +1,11 @@
 # client-dev
 
+## 1.0.44
+
+### Patch Changes
+
+- refactoring mdx-generator
+
 ## 1.0.43
 
 ### Patch Changes

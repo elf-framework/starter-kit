@@ -1,6 +1,5 @@
-import { BlogLayout } from "./BlogLayout";
-
-import menu from "~/constants/article-pages";
+import { BlogLayout } from "~/component/layout/blog/BlogLayout";
+import menu from "~/constants/pages/article-pages";
 
 export function BlogReadLayout({ content, ...extraProps }) {
   return (

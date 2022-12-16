@@ -1,6 +1,5 @@
-import { BlankLayout } from "./BlankLayout";
-
-import menu from "~/constants/article-pages";
+import { BlankLayout } from "~/component/layout/blank/BlankLayout";
+import menu from "~/constants/pages/article-pages";
 
 export function SimpleReadLayout({ content, ...extraProps }) {
   return (

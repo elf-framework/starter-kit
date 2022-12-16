@@ -1,9 +1,10 @@
 import { classnames } from "@elf-framework/sapa";
 import { Tools } from "@elf-framework/ui";
 
-import mainMenus from "../constants/main-menus";
 import "./PageTools.scss";
 import { ThemeButton } from "./utils/theme-button/ThemeButton";
+
+import mainMenus from "~/constants/menu/main-menus";
 
 export function PageTools({ menu, showThemeButton = true }) {
   const pathname = location.pathname;

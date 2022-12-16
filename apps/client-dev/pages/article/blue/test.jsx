@@ -1,11 +1,10 @@
 import { renderToHtml, start } from "@elf-framework/sapa";
 
-// real view page
-import Page, * as props from "./index.mdx";
+import Page, * as props from "./test.page.jsx";
 
 import { Site } from "~/layouts/Site";
 
-const filename = "pages/article/index.mdx";
+const filename = "pages/article/blue/test.page.jsx";
 
 const site = <Site filename={filename} page={Page} {...props} />;
 

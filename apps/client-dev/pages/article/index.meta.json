@@ -5,5 +5,9 @@
     "tableOfContents": false,
     "menuLink": false,
     "editableSourceLink": false,
-    "updatedAt": 1671095029018
+    "updatedAt": 1671192831372,
+    "meta": {
+        "description": "Article",
+        "keywords": "Article"
+    }
 }

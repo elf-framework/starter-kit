@@ -5,7 +5,7 @@ import "./HomeLayout.scss";
 import { Footer } from "~/component/Footer";
 import { Logo } from "~/component/Logo";
 import { ThemeButton } from "~/component/utils/theme-button/ThemeButton";
-import mainMenus from "~/constants/pages/main-menus";
+import mainMenus from "~/constants/menu/main-menus";
 import { useTheme } from "~/hooks/useTheme";
 import { url } from "~/utils/url";
 

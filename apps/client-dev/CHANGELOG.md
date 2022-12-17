@@ -1,5 +1,11 @@
 # client-dev
 
+## 1.0.46
+
+### Patch Changes
+
+- fixed home layout
+
 ## 1.0.45
 
 ### Patch Changes

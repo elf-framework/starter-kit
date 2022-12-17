@@ -7,6 +7,8 @@ import "./Site.scss";
 export function Site({ layout, page: CurrentPage, filename, ...props }) {
   const CurrentLayout = LayoutManager.get(layout || "BasicLayout");
 
+  console.log(layout);
+
   if (!CurrentLayout) {
     return <div>Layout not found</div>;
   }

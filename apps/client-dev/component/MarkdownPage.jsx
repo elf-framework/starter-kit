@@ -72,7 +72,6 @@ function FileEditorLink({ filename }) {
  *
  * 데이타를 다르게 구성해야할 듯 하다.
  *
- * @deprecated
  *
  */
 // function LinkedPage({ menu }) {

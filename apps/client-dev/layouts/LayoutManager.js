@@ -10,6 +10,8 @@ Object.values(list).forEach((module) => {
   Object.assign(items, module);
 });
 
+console.log(items);
+
 export default {
   items,
   get(layout) {

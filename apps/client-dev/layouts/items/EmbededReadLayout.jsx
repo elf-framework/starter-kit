@@ -1,5 +1,4 @@
-import { EmbededLayout } from "./EmbededLayout";
-
+import { EmbededLayout } from "~/component/layout/embeded/EmbededLayout";
 import menu from "~/constants/pages/article-pages";
 
 export function EmbededReadLayout({ content, ...extraProps }) {

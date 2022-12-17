@@ -13,10 +13,6 @@ export function render() {
   return renderToHtml(site);
 }
 
-if (import.meta.env.SSR) {
-  // noop
-} else {
-  start(site, {
-    container: document.getElementById("app"),
-  });
-}
+start(site, {
+  container: document.getElementById("app"),
+});

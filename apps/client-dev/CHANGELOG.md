@@ -1,5 +1,11 @@
 # client-dev
 
+## 1.0.47
+
+### Patch Changes
+
+- modify root property for vite
+
 ## 1.0.46
 
 ### Patch Changes

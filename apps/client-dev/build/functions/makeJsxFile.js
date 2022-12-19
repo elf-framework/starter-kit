@@ -4,7 +4,7 @@ import acornJsx from "acorn-jsx";
 // var jsx = require("acorn-jsx");
 // var JSXParser = acorn.Parser.extend(jsx());
 import { existsSync } from "fs";
-import { basename, dirname, extname } from "path";
+import { basename } from "path";
 
 import {
   getHtmlFilePath,
@@ -46,14 +46,7 @@ export async function makeJsxFile(rootDir, realpath, options) {
 
   let entryRelativeFileName = relativeDocFile;
   let entryFilePath = docFile;
-  let entryDirName = dirname(entryRelativeFileName);
   let entryBaseName = basename(entryRelativeFileName).replace(".page", "");
-
-  let entryFileName = basename(
-    entryRelativeFileName,
-    extname(entryRelativeFileName)
-  );
-  let entryExtName = extname(entryRelativeFileName);
   let htmlFile = getHtmlFilePath(entryFilePath, 1);
   let startJsxFile = getJsxFilePath(entryFilePath, "", 1);
   let pageJsxFile = getJsxFilePath(entryFilePath);

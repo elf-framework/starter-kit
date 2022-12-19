@@ -1,39 +1,39 @@
 export default [
   "Introduction",
   {
-    link: "/pages/introduction/core/",
+    link: "/introduction/core/",
     title: "Core Concept",
   },
   {
-    link: "/pages/introduction/getting-started/",
+    link: "/introduction/getting-started/",
     title: "Getting Started",
   },
   {
-    link: "/pages/introduction/install/",
+    link: "/introduction/install/",
     title: "Install",
     items: [
       {
-        link: "/pages/introduction/install/vite/",
+        link: "/introduction/install/vite/",
         title: "Vite",
       },
       {
-        link: "/pages/introduction/install/webpack/",
+        link: "/introduction/install/webpack/",
         title: "! webpack",
         disabled: true,
       },
       {
-        link: "/pages/introduction/install/create-sapa-app/",
+        link: "/introduction/install/create-sapa-app/",
         title: "! create-sapa-app",
         disabled: true,
       },
     ],
   },
   {
-    link: "/pages/introduction/develop/",
+    link: "/introduction/develop/",
     title: "Development",
   },
   {
-    link: "/pages/introduction/contribute/",
+    link: "/introduction/contribute/",
     title: "Contribute",
   },
 ];

@@ -4,20 +4,19 @@ import { defineConfig } from "vite";
 import path from "path";
 
 const entries = {};
-const files = glob.sync("pages/**/*.html", {
+const PAGES_DIR = "pages/";
+const pages = path.join(PAGES_DIR, "**/*.html");
+const files = glob.sync(pages, {
   dot: true,
   // node_modules 은 검색대상에서 제외
   ignore: ["node_modules/**"],
 });
 
-files
-  .filter((file) => {
-    return file.includes("ui-component") === false;
-  })
-  .forEach((it) => {
-    const file = it;
-    entries[file] = path.resolve(__dirname, it);
-  });
+files.forEach((it) => {
+  const file = it;
+  const entryFileName = file.replace(PAGES_DIR, "").replace(".html", "");
+  entries[entryFileName] = path.resolve(__dirname, it);
+});
 
 export default defineConfig(async () => {
   const mdx = (await import("@mdx-js/rollup")).default;
@@ -29,19 +28,21 @@ export default defineConfig(async () => {
   const rehypePrismPlus = (await import("rehype-prism-plus")).default;
 
   return {
+    appType: "mpa",
     esbuild: {
       jsxFactory: "createElementJsx",
       jsxFragment: "FragmentInstance",
       jsxInject: `import { createElementJsx, FragmentInstance } from "@elf-framework/sapa"`,
     },
     ssr: true,
+    root: path.resolve(__dirname, PAGES_DIR),
     build: {
       minify: false,
       emptyOutDir: true,
       outDir: path.join(__dirname, "../../docs"),
       rollupOptions: {
         input: {
-          ui: path.resolve(__dirname, "index.html"),
+          // ui: path.resolve(__dirname, "index.html"),
           ...entries,
         },
       },

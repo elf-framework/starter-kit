@@ -1,9 +1,25 @@
+import * as glob from "glob";
 import { defineConfig } from "vite";
 import sapa from "vite-plugin-sapa";
 
 import path from "path";
 
-import { mdxGenerator } from "./build/mdx-generator";
+const entries = {};
+const PAGES_DIR = "pages/";
+const pages = path.join(PAGES_DIR, "**/*.html");
+const files = glob.sync(pages, {
+  dot: true,
+  // node_modules 은 검색대상에서 제외
+  ignore: ["node_modules/**"],
+});
+
+files.forEach((it) => {
+  const file = it;
+  const entryFileName = file.replace(PAGES_DIR, "").replace(".html", "");
+  entries[entryFileName] = path.resolve(__dirname, it);
+});
+
+import { autoViewGenerator } from "./build/auto-view-generator";
 
 export default defineConfig(async () => {
   const mdx = (await import("@mdx-js/rollup")).default;
@@ -15,7 +31,7 @@ export default defineConfig(async () => {
   const rehypePrismPlus = (await import("rehype-prism-plus")).default;
 
   return {
-    // appType: "mpa",
+    appType: "mpa",
     server: {
       hmr: {
         protocol: "ws",
@@ -31,12 +47,17 @@ export default defineConfig(async () => {
       jsxFragment: "FragmentInstance",
       jsxInject: `import { createElementJsx, FragmentInstance } from "@elf-framework/sapa"`,
     },
+    root: path.resolve(__dirname, PAGES_DIR),
+    publicDir: path.resolve(__dirname, "public"),
     build: {
+      write: true,
+      outDir: "dist",
       minify: false,
       manifest: true,
       rollupOptions: {
         input: {
-          ui: path.resolve(__dirname, "index.html"),
+          index: path.resolve(__dirname, "index.html"),
+          ...entries,
         },
       },
     },
@@ -58,7 +79,7 @@ export default defineConfig(async () => {
     },
     plugins: [
       sapa(),
-      mdxGenerator(),
+      autoViewGenerator(),
       mdx({
         jsxRuntime: "classic",
         pragma: "sapa.createElementJsx",

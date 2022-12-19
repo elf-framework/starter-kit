@@ -1,11 +1,11 @@
 {
     "createdAt": 1671084222861,
     "title": "Article",
-    "layout": "ArticleLayout",
+    "layout": "ArticleReadLayout",
     "tableOfContents": false,
     "menuLink": false,
     "editableSourceLink": false,
-    "updatedAt": 1671202820426,
+    "updatedAt": 1671413556936,
     "meta": {
         "description": "Article",
         "keywords": "Article"

@@ -4,7 +4,7 @@ const metaList = import.meta.glob("~/pages/blog/**/*.meta.json", {
 
 let list = Object.entries(metaList)
   .map(([key, value]) => {
-    if (key.startsWith("/pages/blog/index")) return undefined;
+    if (key.startsWith("/blog/index")) return undefined;
 
     return {
       link: key.replace("meta.json", "html"),

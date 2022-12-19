@@ -2,7 +2,7 @@ import { View } from "@elf-framework/ui";
 
 import "./EmbededLayout.scss";
 
-import { useTheme } from "~/hooks/useTheme";
+import { useTheme } from "~/component/hooks/useTheme";
 
 export function EmbededLayout(props) {
   const { content } = props;

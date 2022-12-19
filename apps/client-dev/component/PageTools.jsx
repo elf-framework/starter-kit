@@ -4,7 +4,7 @@ import { Tools } from "@elf-framework/ui";
 import "./PageTools.scss";
 import { ThemeButton } from "./utils/theme-button/ThemeButton";
 
-import mainMenus from "~/constants/menu/main-menus";
+import mainMenus from "~/constants/menu/main-menu";
 
 export function PageTools({ menu, showThemeButton = true }) {
   const pathname = location.pathname;

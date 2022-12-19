@@ -3,11 +3,11 @@ import { Blank, Button, Divider } from "@elf-framework/ui";
 import "./HomeLayout.scss";
 
 import { Footer } from "~/component/Footer";
+import { useTheme } from "~/component/hooks/useTheme";
 import { Logo } from "~/component/Logo";
 import { ThemeButton } from "~/component/utils/theme-button/ThemeButton";
-import mainMenus from "~/constants/menu/main-menus";
-import { useTheme } from "~/hooks/useTheme";
-import { url } from "~/utils/url";
+import { url } from "~/component/utils/url";
+import mainMenus from "~/constants/menu/main-menu";
 
 export function HomeLayout({ content }) {
   useTheme();
@@ -66,7 +66,7 @@ export function HomeLayout({ content }) {
               // shape="round"
               variant="primary"
               as="link"
-              href={url("pages/introduction/")}
+              href={url("introduction/")}
             >
               Go to introduction
             </Button>

@@ -1,5 +1,5 @@
 import { existsSync } from "fs";
-import { basename, dirname, extname } from "path";
+import { basename, extname } from "path";
 
 import {
   generateMarkdownMetaFile,
@@ -17,7 +17,6 @@ export function makeMdxFile(rootDir, realpath, options = {}) {
 
   let entryRelativeFileName = relativeDocFile;
   let entryFilePath = docFile;
-  let entryDirName = dirname(entryRelativeFileName);
   let entryBaseName = basename(entryRelativeFileName);
   let entryFileName = basename(
     entryRelativeFileName,

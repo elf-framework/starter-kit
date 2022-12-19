@@ -5,7 +5,7 @@ import "./PageLayout.scss";
 import { Footer } from "~/component/Footer";
 import { Logo } from "~/component/Logo";
 import { PageTools } from "~/component/PageTools";
-import { useTheme } from "~/hooks/useTheme";
+import { useTheme } from "~/component/hooks/useTheme";
 
 export function PageLayout(props) {
   let {

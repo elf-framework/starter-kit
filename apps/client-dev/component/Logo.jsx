@@ -1,5 +1,6 @@
-import { url } from "../utils/url";
 import "./Logo.scss";
+
+import { url } from "~/component/utils/url";
 
 export function Logo({ link = url("") }) {
   return (

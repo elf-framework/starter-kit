@@ -2,11 +2,11 @@ import { makeCssVariablePrefixMap, propertyMap, View } from "@elf-framework/ui";
 
 import "./SimpleLayout.scss";
 
+import { useTheme } from "~/component/hooks/useTheme";
 import { Logo } from "~/component/Logo";
 import { Navigation } from "~/component/Navigation";
 import { PageSelectTools } from "~/component/PageSelectTools";
 import { ThemeButton } from "~/component/utils/theme-button/ThemeButton";
-import { useTheme } from "~/hooks/useTheme";
 
 const cssProperties = makeCssVariablePrefixMap("--simple-layout", {
   sidebarWidth: true,

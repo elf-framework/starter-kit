@@ -5,7 +5,7 @@ import "./DocumentLayout.scss";
 import { Logo } from "~/component/Logo";
 import { Navigation } from "~/component/Navigation";
 import { PageTools } from "~/component/PageTools";
-import { useTheme } from "~/hooks/useTheme";
+import { useTheme } from "~/component/hooks/useTheme";
 
 export function DocumentLayout(props) {
   let {

@@ -2,11 +2,11 @@ import { Flex, View } from "@elf-framework/ui";
 
 import "./ApplicationLayout.scss";
 
+import { useTheme } from "~/component/hooks/useTheme";
 import { Logo } from "~/component/Logo";
 import { Navigation } from "~/component/Navigation";
 import { PageTools } from "~/component/PageTools";
 import { ThemeButton } from "~/component/utils/theme-button/ThemeButton";
-import { useTheme } from "~/hooks/useTheme";
 
 export function ApplicationLayout(props) {
   let {

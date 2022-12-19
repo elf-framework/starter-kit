@@ -1,5 +1,5 @@
 import { PageLayout } from "~/component/layout/page/PageLayout";
-import menu from "~/constants/pages/article-pages";
+import menu from "~/constants/menu/article-sidebar-menu";
 
 export function PageReadLayout({ content, ...extraProps }) {
   return (

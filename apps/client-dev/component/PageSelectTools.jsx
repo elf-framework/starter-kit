@@ -1,4 +1,4 @@
-import mainMenus from "../constants/menu/main-menus";
+import mainMenus from "../constants/menu/main-menu";
 import "./PageSelectTools.scss";
 
 export function PageSelectTools() {

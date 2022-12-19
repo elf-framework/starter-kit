@@ -2,7 +2,7 @@ import { makeCssVariablePrefixMap, propertyMap, View } from "@elf-framework/ui";
 
 import "./BlankLayout.scss";
 
-import { useTheme } from "~/hooks/useTheme";
+import { useTheme } from "~/component/hooks/useTheme";
 
 const cssProperties = makeCssVariablePrefixMap("--blank-layout", {
   contentBackgroundColor: true,

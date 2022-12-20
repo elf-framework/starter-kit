@@ -1,8 +1,3 @@
-import * as acorn from "acorn";
-import acornJsx from "acorn-jsx";
-
-// var jsx = require("acorn-jsx");
-// var JSXParser = acorn.Parser.extend(jsx());
 import * as ts from "typescript";
 
 import { existsSync } from "fs";

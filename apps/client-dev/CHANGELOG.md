@@ -1,5 +1,11 @@
 # client-dev
 
+## 1.0.50
+
+### Patch Changes
+
+- remove acorn acorn-jsx package
+
 ## 1.0.49
 
 ### Patch Changes

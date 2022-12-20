@@ -1,6 +1,6 @@
 {
   "name": "client-dev",
-  "version": "1.0.49",
+  "version": "1.0.50",
   "private": true,
   "description": "",
   "main": "index.js",
@@ -32,8 +32,6 @@
     "@elf-framework/config": "*",
     "@mdx-js/rollup": "^2.2.1",
     "@types/node": "^18.11.17",
-    "acorn": "^8.8.1",
-    "acorn-jsx": "^5.3.2",
     "autoprefixer": "^10.4.13",
     "chokidar": "^3.5.3",
     "front-matter": "^4.0.2",

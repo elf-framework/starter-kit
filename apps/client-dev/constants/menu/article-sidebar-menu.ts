@@ -1,4 +1,5 @@
-export default [
+import { MenuItem } from "~/types/site.d";
+const menu: MenuItem[] = [
   "Introduction",
   {
     link: "/article/core/",
@@ -33,3 +34,5 @@ export default [
     title: "Contribute",
   },
 ];
+
+export default menu;

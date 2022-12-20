@@ -51,12 +51,8 @@ export function getHtmlFilePath(realPath, depth = 0) {
   return getFilePath(realPath, ".html", depth);
 }
 
-export function getJsxFilePath(realPath, ext = "", depth = 0) {
-  return getFilePath(
-    realPath,
-    "." + [ext, "jsx"].filter(Boolean).join("."),
-    depth
-  );
+export function getJsxFilePath(realPath, ext = "jsx", depth = 0) {
+  return getFilePath(realPath, "." + [ext].filter(Boolean).join("."), depth);
 }
 
 export function getTitle(realPath, depth = 0) {

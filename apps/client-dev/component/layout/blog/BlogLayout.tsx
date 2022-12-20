@@ -10,20 +10,30 @@ const meta = {
   currentBlogList,
 };
 
-export function BlogLayout(props) {
-  let {
-    content,
-    date,
-    menu = [],
-    tags,
-    logo,
-    toolbar,
-    account,
-    title = "",
-    class: className = "",
-  } = props;
+interface BlogLayoutProps {
+  content: any;
+  date?: string;
+  menu?: any[];
+  tags?: string[];
+  logo?: any;
+  toolbar?: any;
+  account?: any;
+  title?: string;
+  class?: string;
+}
 
-  logo = logo || <Logo title={title} />;
+export function BlogLayout({
+  content,
+  date,
+  menu = [],
+  tags,
+  logo,
+  toolbar,
+  account,
+  title = "",
+  class: className = "",
+}: BlogLayoutProps) {
+  logo = logo || <Logo />;
   toolbar = toolbar || <PageTools menu={menu} />;
 
   return (

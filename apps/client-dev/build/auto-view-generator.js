@@ -5,24 +5,25 @@ import path from "path";
 import { layouts } from "../constants/layouts";
 import { makeJsxFile } from "./functions/makeJsxFile";
 import { makeMdxFile } from "./functions/makeMdxFile";
-// import { removeFile } from "./functions/utils";
+// import { removeFile } from "./functions/utils"
 
 const PROJECT_ROOT = path.resolve(__dirname, "..");
 const PROJECT_ROOT_DIR = PROJECT_ROOT + "/";
 const PROJECT_PAGES_DIR = "pages/";
 
-const VIEW_PAGE_JSX_EXTENSION = ".page.jsx";
+const JSX_EXT = "tsx";
+const VIEW_PAGE_JSX_EXTENSION = ".page." + JSX_EXT;
 const VIEW_PAGE_MDX_EXTENSION = ".mdx";
 
 function generateHtmlFile(realpath) {
   if (realpath.endsWith(VIEW_PAGE_JSX_EXTENSION)) {
     // *.page.jsx 파일 기준 생성
-    makeJsxFile(PROJECT_ROOT_DIR, realpath, { layouts });
+    makeJsxFile(PROJECT_ROOT_DIR, realpath, { layouts, jsxExt: JSX_EXT });
   }
 
   if (realpath.endsWith(VIEW_PAGE_MDX_EXTENSION)) {
     // .mdx 파일 기준 생성
-    makeMdxFile(PROJECT_ROOT_DIR, realpath, { layouts });
+    makeMdxFile(PROJECT_ROOT_DIR, realpath, { layouts, jsxExt: JSX_EXT });
   }
 }
 

@@ -1,6 +1,4 @@
-interface ILayouts {
-  [key: string]: string;
-}
+import { ILayouts } from "~/types/site";
 
 /**
  * Predefined layouts for pages

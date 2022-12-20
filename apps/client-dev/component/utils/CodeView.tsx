@@ -1,6 +1,11 @@
+import type { ContentType } from "@elf-framework/sapa";
 import { Tab, TabItem } from "@elf-framework/ui";
 
-export function CodeView({ content }) {
+interface CodeViewProps {
+  content: ContentType[];
+}
+
+export function CodeView({ content }: CodeViewProps) {
   return (
     <div class="codeview" style={{ marginTop: 10 }}>
       <Tab

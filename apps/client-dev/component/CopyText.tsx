@@ -1,5 +1,5 @@
-import { createElementJsx, useState } from "@elf-framework/sapa";
-import type { ContentType } from "@elf-framework/ui";
+import { useState } from "@elf-framework/sapa";
+import type { ContentType } from "@elf-framework/sapa";
 
 import "./CopyText.scss";
 

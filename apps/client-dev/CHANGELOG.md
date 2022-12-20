@@ -1,5 +1,11 @@
 # client-dev
 
+## 1.0.49
+
+### Patch Changes
+
+- Refactoring to typescript
+
 ## 1.0.48
 
 ### Patch Changes

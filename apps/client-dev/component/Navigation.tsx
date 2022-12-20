@@ -1,7 +1,14 @@
 import { useEffect } from "@elf-framework/sapa";
+import type { ContentType } from "@elf-framework/sapa";
 import { Sidebar } from "@elf-framework/ui";
 
-export function Navigation({ menu = [], header, footer }) {
+interface NavigationProps {
+  menu?: any[];
+  header?: ContentType;
+  footer?: any;
+}
+
+export function Navigation({ menu = [], header, footer }: NavigationProps) {
   const { href, pathname } = location;
 
   useEffect(() => {

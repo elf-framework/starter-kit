@@ -1,7 +1,10 @@
 /**
  * meta data 정의
  */
-export const frontmatter = {
+
+import { FrontMatter } from "~/types/site";
+
+export const frontmatter: FrontMatter = {
   title: "{{title}}",
   layout: "{{pageLayout}}",
 };

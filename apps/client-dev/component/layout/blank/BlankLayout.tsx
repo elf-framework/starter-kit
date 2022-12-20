@@ -1,3 +1,4 @@
+import type { ContentType } from "@elf-framework/sapa";
 import { makeCssVariablePrefixMap, propertyMap, View } from "@elf-framework/ui";
 
 import "./BlankLayout.scss";
@@ -8,9 +9,12 @@ const cssProperties = makeCssVariablePrefixMap("--blank-layout", {
   contentBackgroundColor: true,
 });
 
-export function BlankLayout(props) {
-  const { content, style = {} } = props;
+interface BlankLayoutProps {
+  content: ContentType;
+  style?: any;
+}
 
+export function BlankLayout({ content, style = {} }: BlankLayoutProps) {
   useTheme();
 
   return (

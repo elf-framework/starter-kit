@@ -2,5 +2,8 @@
     "createdAt": 1671108056170,
     "title": "Application Page",
     "layout": "ApplicationReadLayout",
-    "updatedAt": 1671203675604
+    "updatedAt": 1671536644163,
+    "meta": {
+        "title": "yellow page"
+    }
 }

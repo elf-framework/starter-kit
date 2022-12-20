@@ -8,7 +8,7 @@ let list = Object.entries(metaList)
 
     return {
       link: key.replace("meta.json", "html"),
-      ...value,
+      ...(value as any),
     };
   })
   .filter(Boolean);

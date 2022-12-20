@@ -1,7 +1,18 @@
 import { classnames } from "@elf-framework/sapa";
 
 import "./TableOfContents.scss";
-export function TableOfContents({ items }) {
+
+export interface TableOfContentsItem {
+  id: string;
+  text: string;
+  level: string;
+}
+
+interface TableOfContentsProps {
+  items: TableOfContentsItem[];
+}
+
+export function TableOfContents({ items }: TableOfContentsProps) {
   return (
     <div class="table-of-contents">
       <div class="items">

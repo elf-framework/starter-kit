@@ -1,5 +1,5 @@
+import type { ContentType } from "@elf-framework/sapa";
 import { Flex, View } from "@elf-framework/ui";
-import type { ContentType } from "@elf-framework/ui";
 
 import "./ApplicationLayout.scss";
 
@@ -25,10 +25,9 @@ export function ApplicationLayout({
   logo = undefined,
   toolbar = undefined,
   sidebar = undefined,
-  title = "",
   class: className = "",
 }: ApplicationLayoutProps) {
-  logo = logo || <Logo title={title} />;
+  logo = logo || <Logo />;
   toolbar = toolbar || <PageTools menu={menu} showThemeButton={false} />;
   sidebar = sidebar || <Navigation menu={menu} />;
 

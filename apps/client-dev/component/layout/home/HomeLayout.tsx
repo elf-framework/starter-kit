@@ -1,4 +1,5 @@
 import { Blank, Button, Divider } from "@elf-framework/ui";
+import type { ContentType } from "@elf-framework/ui";
 
 import "./HomeLayout.scss";
 
@@ -9,7 +10,14 @@ import { ThemeButton } from "~/component/utils/theme-button/ThemeButton";
 import { url } from "~/component/utils/url";
 import mainMenus from "~/constants/menu/main-menu";
 
-export function HomeLayout({ content }) {
+interface HomeLayoutProps {
+  content: ContentType;
+  sidebar?: ContentType;
+  toolbar?: ContentType;
+  menu?: any[];
+}
+
+export function HomeLayout({ content, sidebar, toolbar }: HomeLayoutProps) {
   useTheme();
 
   return (

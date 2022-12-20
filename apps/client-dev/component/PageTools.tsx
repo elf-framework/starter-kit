@@ -6,7 +6,12 @@ import { ThemeButton } from "./utils/theme-button/ThemeButton";
 
 import mainMenus from "~/constants/menu/main-menu";
 
-export function PageTools({ menu, showThemeButton = true }) {
+interface PageToolsProps {
+  menu: any[];
+  showThemeButton?: boolean;
+}
+
+export function PageTools({ menu, showThemeButton = true }: PageToolsProps) {
   const pathname = location.pathname;
 
   return (

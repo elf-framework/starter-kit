@@ -1,6 +1,7 @@
+import type { VNode } from "@elf-framework/sapa";
 
 import "./MarkdownPage.scss";
-import { TableOfContents } from "./TableOfContents";
+import { TableOfContents, TableOfContentsItem } from "./TableOfContents";
 
 function FileEditorLink({ filename }: { filename: string }) {
   return filename ? (
@@ -16,6 +17,13 @@ function FileEditorLink({ filename }: { filename: string }) {
   );
 }
 
+interface MarkdownPageProps {
+  page: any;
+  filename?: string;
+  tableOfContents?: boolean;
+  editableSourceLink?: boolean;
+}
+
 export function MarkdownPage({
   page: Page,
   filename,
@@ -23,11 +31,11 @@ export function MarkdownPage({
   tableOfContents = false,
   // menuLink = false,
   editableSourceLink = false,
-}) {
+}: MarkdownPageProps) {
   const template = Page();
 
-  const items = [];
-  template.children.forEach((child) => {
+  const items: TableOfContentsItem[] = [];
+  template.children.forEach((child: VNode) => {
     if (child.nodeName?.startsWith("H")) {
       const text = child.makeText(" ");
       const id = child.makeText("-");

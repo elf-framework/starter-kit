@@ -12,26 +12,27 @@ import {
 } from "./utils";
 
 export function makeMdxFile(rootDir, realpath, options = {}) {
+  const JSX_EXT = options.jsxExt || "jsx";
+
   const docFile = realpath;
   const relativeDocFile = docFile.replace(rootDir, "");
 
   let entryRelativeFileName = relativeDocFile;
   let entryFilePath = docFile;
-  let entryBaseName = basename(entryRelativeFileName);
   let entryFileName = basename(
     entryRelativeFileName,
     extname(entryRelativeFileName)
   );
   let entryExtName = extname(entryRelativeFileName);
   let htmlFile = getHtmlFilePath(entryFilePath);
-  let startJsxFile = getJsxFilePath(entryFilePath);
-  const metaFile = getMetaFilePath(entryFilePath);
+  let startJsxFile = getJsxFilePath(entryFilePath, JSX_EXT);
+  const metaFile = getMetaFilePath(entryFilePath, JSX_EXT);
 
   // load template file contents
   const indexTemplate = readContent("./build/template/index.html");
 
   // jsx page template
-  const startTemplate = readContent("./build/template/start.jsx");
+  const startTemplate = readContent("./build/template/start." + JSX_EXT);
 
   if (entryExtName !== ".mdx") {
     // throw new Error("not mdx file");
@@ -56,7 +57,7 @@ export function makeMdxFile(rootDir, realpath, options = {}) {
   if (oldMetaTags !== newMetaTags) {
     writeContent(htmlFile, indexTemplate, {
       meta: newMetaTags,
-      entryFileName: "./" + entryFileName + ".jsx",
+      entryFileName: "./" + entryFileName + "." + JSX_EXT,
     });
   }
 
@@ -65,7 +66,7 @@ export function makeMdxFile(rootDir, realpath, options = {}) {
   if (existsSync(startJsxFile) === false) {
     writeContent(startJsxFile, startTemplate, {
       filename: entryRelativeFileName,
-      applicationFilePath: "./" + entryBaseName,
+      applicationFilePath: "./" + entryFileName + ".mdx",
     });
   }
 }

@@ -1,12 +1,15 @@
+import type { ContentType } from "@elf-framework/sapa";
 import { View } from "@elf-framework/ui";
 
 import "./EmbededLayout.scss";
 
 import { useTheme } from "~/component/hooks/useTheme";
 
-export function EmbededLayout(props) {
-  const { content } = props;
+interface EmbededLayoutProps {
+  content: ContentType;
+}
 
+export function EmbededLayout({ content }: EmbededLayoutProps) {
   useTheme();
 
   return (

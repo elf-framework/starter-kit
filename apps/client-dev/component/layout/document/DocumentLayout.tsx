@@ -2,23 +2,30 @@ import { Flex, View } from "@elf-framework/ui";
 
 import "./DocumentLayout.scss";
 
+import { useTheme } from "~/component/hooks/useTheme";
 import { Logo } from "~/component/Logo";
 import { Navigation } from "~/component/Navigation";
 import { PageTools } from "~/component/PageTools";
-import { useTheme } from "~/component/hooks/useTheme";
 
-export function DocumentLayout(props) {
-  let {
-    content,
-    menu = [],
-    logo = undefined,
-    toolbar = undefined,
-    sidebar = undefined,
-    title = "",
-    class: className = "",
-  } = props;
+interface DocumentLayoutProps {
+  content: any;
+  menu?: any[];
+  logo?: any;
+  toolbar?: any;
+  sidebar?: any;
+  title?: string;
+  class?: string;
+}
 
-  logo = logo || <Logo title={title} />;
+export function DocumentLayout({
+  content,
+  menu = [],
+  logo = undefined,
+  toolbar = undefined,
+  sidebar = undefined,
+  class: className = "",
+}: DocumentLayoutProps) {
+  logo = logo || <Logo />;
   toolbar = toolbar || <PageTools menu={menu} />;
   sidebar = sidebar || <Navigation menu={menu} />;
 

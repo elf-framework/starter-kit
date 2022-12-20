@@ -1,14 +1,7 @@
 import { url } from "~/component/utils/url";
+import { MenuItem } from "~/types/site";
 
-interface IMenu {
-  type: "link" | "category";
-  title: string;
-  category?: string;
-  link?: string;
-  items?: IMenu[];
-}
-
-const menu: IMenu[] = [
+const menu: MenuItem[] = [
   {
     type: "link",
     title: "Application",

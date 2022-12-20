@@ -1,10 +1,10 @@
 import { start } from "@elf-framework/sapa";
 
 // real view page
-import Page, * as props from "{{applicationFilePath}}";
+import Page, * as props from "./index.mdx";
 import { Site } from "~/component/site/Site";
 
-const filename = "{{filename}}";
+const filename = "pages/blog/index.mdx";
 
 const site = <Site filename={filename} page={Page} {...props} />;
 

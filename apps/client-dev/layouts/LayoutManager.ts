@@ -2,7 +2,7 @@ import { layouts } from "../constants/layouts";
 
 const items = {};
 
-const list = import.meta.glob("./items/*.jsx", {
+const list = import.meta.glob("./items/*.tsx", {
   eager: true,
 });
 

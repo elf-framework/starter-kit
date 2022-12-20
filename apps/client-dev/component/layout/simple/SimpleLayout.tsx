@@ -1,3 +1,4 @@
+import type { ContentType } from "@elf-framework/sapa";
 import { makeCssVariablePrefixMap, propertyMap, View } from "@elf-framework/ui";
 
 import "./SimpleLayout.scss";
@@ -12,21 +13,31 @@ const cssProperties = makeCssVariablePrefixMap("--simple-layout", {
   sidebarWidth: true,
 });
 
-export function SimpleLayout(props) {
-  let {
-    content,
-    menu = [],
-    logo = undefined,
-    toolbar = undefined,
-    sidebar = undefined,
-    title = "",
-    class: className = "",
-    showLogo = true,
-    showTools = true,
-    style = {},
-  } = props;
+interface SimpleLayoutProps {
+  content: ContentType;
+  menu?: any[];
+  logo?: ContentType;
+  toolbar?: ContentType;
+  sidebar?: ContentType;
+  title?: ContentType;
+  class?: string;
+  showLogo?: boolean;
+  showTools?: boolean;
+  style?: any;
+}
 
-  logo = logo || <Logo title={title} />;
+export function SimpleLayout({
+  content,
+  menu = [],
+  logo = undefined,
+  toolbar = undefined,
+  sidebar = undefined,
+  class: className = "",
+  showLogo = true,
+  showTools = true,
+  style = {},
+}: SimpleLayoutProps) {
+  logo = logo || <Logo />;
   toolbar = toolbar || <PageSelectTools menu={menu} />;
   sidebar = sidebar || <Navigation menu={menu} />;
 

@@ -1,24 +1,32 @@
+import type { ContentType } from "@elf-framework/sapa";
 import { Flex } from "@elf-framework/ui";
 
 import "./PageLayout.scss";
 
 import { Footer } from "~/component/Footer";
+import { useTheme } from "~/component/hooks/useTheme";
 import { Logo } from "~/component/Logo";
 import { PageTools } from "~/component/PageTools";
-import { useTheme } from "~/component/hooks/useTheme";
 
-export function PageLayout(props) {
-  let {
-    content,
-    menu = [],
-    logo = undefined,
-    toolbar = undefined,
-    navigator = undefined,
-    title = "",
-    class: className = "",
-  } = props;
+interface PageLayoutProps {
+  content: ContentType;
+  menu?: any[];
+  logo?: ContentType;
+  toolbar?: ContentType;
+  navigator?: ContentType;
+  title?: ContentType;
+  class?: string;
+}
 
-  logo = logo || <Logo title={title} />;
+export function PageLayout({
+  content,
+  menu = [],
+  logo = undefined,
+  toolbar = undefined,
+  navigator = undefined,
+  class: className = "",
+}: PageLayoutProps) {
+  logo = logo || <Logo />;
   toolbar = toolbar || <PageTools menu={menu} />;
   navigator = navigator || "Navigation";
 

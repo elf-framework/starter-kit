@@ -1,6 +1,8 @@
 {
     "createdAt": 1671107709872,
-    "title": "ELF framework starter kit",
+    "title": "ELF framework starter kit, Your first app",
     "layout": "MainLayout",
-    "updatedAt": 1671434866919
+    "updatedAt": 1671528254036,
+    "sidebar": "Sidebar",
+    "toolbar": "Toolbar"
 }

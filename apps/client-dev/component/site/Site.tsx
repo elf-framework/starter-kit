@@ -1,10 +1,22 @@
 import "@elf-framework/ui/style.css";
 
-import { MarkdownPage } from "../component/MarkdownPage";
-import LayoutManager from "./LayoutManager";
 import "./Site.scss";
 
-export function Site({ layout, page: CurrentPage, filename, ...props }) {
+import { MarkdownPage } from "~/component/MarkdownPage";
+import LayoutManager from "~/layouts/LayoutManager";
+
+interface SiteProps {
+  layout?: string;
+  page: any;
+  filename?: string;
+}
+
+export function Site({
+  layout,
+  page: CurrentPage,
+  filename,
+  ...props
+}: SiteProps) {
   const CurrentLayout = LayoutManager.get(layout || "BasicLayout");
 
   if (!CurrentLayout) {

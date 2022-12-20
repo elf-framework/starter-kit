@@ -3,7 +3,7 @@ import { renderToHtml, start } from "@elf-framework/sapa";
 // real view page
 import Page, { frontmatter } from "./test.page.jsx";
 
-import { Site } from "~/layouts/Site";
+import { Site } from "~/component/site/Site";
 
 const filename = "pages/application/test.page.jsx";
 

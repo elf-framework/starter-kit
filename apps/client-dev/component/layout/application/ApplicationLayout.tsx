@@ -1,4 +1,5 @@
 import { Flex, View } from "@elf-framework/ui";
+import type { ContentType } from "@elf-framework/ui";
 
 import "./ApplicationLayout.scss";
 
@@ -8,17 +9,25 @@ import { Navigation } from "~/component/Navigation";
 import { PageTools } from "~/component/PageTools";
 import { ThemeButton } from "~/component/utils/theme-button/ThemeButton";
 
-export function ApplicationLayout(props) {
-  let {
-    content,
-    menu = [],
-    logo = undefined,
-    toolbar = undefined,
-    sidebar = undefined,
-    title = "",
-    class: className = "",
-  } = props;
+interface ApplicationLayoutProps {
+  content: ContentType;
+  menu?: any[];
+  logo?: ContentType;
+  toolbar?: ContentType;
+  sidebar?: ContentType;
+  title?: string;
+  class?: string;
+}
 
+export function ApplicationLayout({
+  content,
+  menu = [],
+  logo = undefined,
+  toolbar = undefined,
+  sidebar = undefined,
+  title = "",
+  class: className = "",
+}: ApplicationLayoutProps) {
   logo = logo || <Logo title={title} />;
   toolbar = toolbar || <PageTools menu={menu} showThemeButton={false} />;
   sidebar = sidebar || <Navigation menu={menu} />;

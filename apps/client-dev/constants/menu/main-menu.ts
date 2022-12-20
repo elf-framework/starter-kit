@@ -1,6 +1,14 @@
 import { url } from "~/component/utils/url";
 
-export default [
+interface IMenu {
+  type: "link" | "category";
+  title: string;
+  category?: string;
+  link?: string;
+  items?: IMenu[];
+}
+
+const menu: IMenu[] = [
   {
     type: "link",
     title: "Application",
@@ -45,3 +53,5 @@ export default [
     link: url("embeded/"),
   },
 ];
+
+export default menu;

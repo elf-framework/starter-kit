@@ -3,7 +3,7 @@ import { renderToHtml, start } from "@elf-framework/sapa";
 // real view page
 import Page, * as props from "./index.mdx";
 
-import { Site } from "~/layouts/Site";
+import { Site } from "~/component/site/Site";
 
 const filename = "pages/application/index.mdx";
 

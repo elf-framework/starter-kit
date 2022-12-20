@@ -1,6 +1,6 @@
 {
   "name": "client-dev",
-  "version": "1.0.47",
+  "version": "1.0.48",
   "private": true,
   "description": "",
   "main": "index.js",
@@ -19,18 +19,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@elf-framework/color": "^0.0.69",
+    "@elf-framework/color": "^0.0.116",
     "@elf-framework/design-system": "^0.0.113",
     "@elf-framework/design-tokens": "^0.0.113",
     "@elf-framework/icon": "^0.0.12",
-    "@elf-framework/sapa": "^0.0.107",
+    "@elf-framework/sapa": "^0.0.119",
     "@elf-framework/ui": "^0.0.115",
     "github-markdown-css": "^5.1.0",
-    "mermaid": "^9.2.2"
+    "mermaid": "^9.3.0"
   },
   "devDependencies": {
     "@elf-framework/config": "*",
     "@mdx-js/rollup": "^2.2.1",
+    "@types/node": "^18.11.17",
     "acorn": "^8.8.1",
     "acorn-jsx": "^5.3.2",
     "autoprefixer": "^10.4.13",
@@ -44,10 +45,11 @@
     "remark-frontmatter": "^4.0.1",
     "remark-gfm": "^3.0.1",
     "remark-mdx-frontmatter": "^2.1.1",
-    "sass": "^1.56.2",
-    "vite": "^4.0.1",
+    "sass": "^1.57.1",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.2",
     "vite-plugin-sapa": "^0.0.10",
-    "vite-plugin-ssr": "^0.4.60",
-    "vitest": "0.25.8"
+    "vite-plugin-ssr": "^0.4.62",
+    "vitest": "0.26.0"
   }
 }

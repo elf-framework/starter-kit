@@ -1,5 +1,11 @@
 # @elf-framework/config
 
+## 1.1.4
+
+### Patch Changes
+
+- update typescript environment
+
 ## 1.1.3
 
 ### Patch Changes

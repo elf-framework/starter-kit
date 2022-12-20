@@ -1,8 +1,9 @@
-import { useState } from "@elf-framework/sapa";
+import { createElementJsx, useState } from "@elf-framework/sapa";
+import type { ContentType } from "@elf-framework/ui";
 
 import "./CopyText.scss";
 
-export function CopyText({ text }) {
+export function CopyText({ text }: { text: string }): ContentType {
   const [copied, setCopied] = useState(false);
   return (
     <span

@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  plugins: ["jsx", "prettier", "react"],
+  plugins: ["jsx", "prettier"],
   extends: [
     "eslint:recommended",
     "plugin:prettier/recommended",

@@ -1,5 +1,11 @@
 # client-dev
 
+## 1.0.48
+
+### Patch Changes
+
+- update typescript environment
+
 ## 1.0.47
 
 ### Patch Changes

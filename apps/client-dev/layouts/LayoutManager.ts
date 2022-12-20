@@ -12,12 +12,12 @@ Object.values(list).forEach((module) => {
 
 export default {
   items,
-  get(layout) {
+  get(layout: string) {
     let currentLayout = this.items[layout];
 
     if (!currentLayout) {
       const currentPath = window.location.pathname.substring(1);
-      Object.keys(layouts).forEach((key) => {
+      Object.keys(layouts).forEach((key: string) => {
         if (currentPath.startsWith(key)) {
           currentLayout = this.items[layouts[key]];
         }

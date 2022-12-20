@@ -1,7 +1,11 @@
+interface ILayouts {
+  [key: string]: string;
+}
+
 /**
  * Predefined layouts for pages
  */
-export const layouts = {
+export const layouts: ILayouts = {
   "pages/article": "ArticleReadLayout",
   "pages/blog": "BlogReadLayout",
   "pages/main": "HomeLayout",

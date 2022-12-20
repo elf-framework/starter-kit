@@ -2,7 +2,7 @@ import { renderToHtml, start } from "@elf-framework/sapa";
 
 import Page, * as props from "./test.page.jsx";
 
-import { Site } from "~/layouts/Site";
+import { Site } from "~/component/site/Site";
 
 const filename = "pages/article/blue/test.page.jsx";
 

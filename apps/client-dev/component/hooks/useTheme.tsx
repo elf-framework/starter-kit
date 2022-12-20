@@ -1,6 +1,6 @@
 import { useEffect, useEmit } from "@elf-framework/sapa";
 
-function changeTheme(mode) {
+function changeTheme(mode: string): void {
   if (mode === "light") {
     document.body.classList.toggle("theme-dark", false);
   } else {
@@ -8,7 +8,7 @@ function changeTheme(mode) {
   }
 }
 
-export function useTheme() {
+export function useTheme(): void {
   useEffect(() => {
     const media =
       window.matchMedia &&
@@ -26,5 +26,7 @@ export function useTheme() {
         localStorage.setItem("view-mode", mode);
         changeTheme(mode);
       });
+
+    return undefined;
   }, []);
 }

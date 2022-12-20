@@ -43,6 +43,7 @@ export default defineConfig(async () => {
       },
     },
     esbuild: {
+      jsx: "transform",
       jsxFactory: "createElementJsx",
       jsxFragment: "FragmentInstance",
       jsxInject: `import { createElementJsx, FragmentInstance } from "@elf-framework/sapa"`,

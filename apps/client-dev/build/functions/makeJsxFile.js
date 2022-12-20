@@ -21,9 +21,9 @@ import { Visitor } from "./Visitor";
 
 // console.log(acorn, acornJsx);
 
-var JSXParser = acorn.Parser.extend(acornJsx());
+const JSXParser = acorn.Parser.extend(acornJsx());
 
-var visitor = new Visitor();
+const visitor = new Visitor();
 
 /**
  * *.page.jsx 파일은 page 를 렌더링 하기 위한 root 로 사용된다.
@@ -44,12 +44,12 @@ export async function makeJsxFile(rootDir, realpath, options) {
   const docFile = realpath;
   const relativeDocFile = docFile.replace(rootDir, "");
 
-  let entryRelativeFileName = relativeDocFile;
-  let entryFilePath = docFile;
-  let entryBaseName = basename(entryRelativeFileName).replace(".page", "");
-  let htmlFile = getHtmlFilePath(entryFilePath, 1);
-  let startJsxFile = getJsxFilePath(entryFilePath, "", 1);
-  let pageJsxFile = getJsxFilePath(entryFilePath);
+  const entryRelativeFileName = relativeDocFile;
+  const entryFilePath = docFile;
+  const entryBaseName = basename(entryRelativeFileName).replace(".page", "");
+  const htmlFile = getHtmlFilePath(entryFilePath, 1);
+  const startJsxFile = getJsxFilePath(entryFilePath, "", 1);
+  const pageJsxFile = getJsxFilePath(entryFilePath);
   const metaFile = getMetaFilePath(entryFilePath, 1);
 
   if (realpath.endsWith(".page.jsx") === false) {
@@ -88,7 +88,7 @@ export async function makeJsxFile(rootDir, realpath, options) {
     });
   }
 
-  let metaInfo = {
+  const metaInfo = {
     title,
   };
 

@@ -7,7 +7,7 @@ export function ThemeButton() {
   const mode = window.localStorage.getItem("view-mode") || "light";
   const [viewMode, setViewMode] = useState(mode);
 
-  useSubscribe("view-mode", (mode) => {
+  useSubscribe("view-mode", (mode: string) => {
     setViewMode(mode);
   });
 

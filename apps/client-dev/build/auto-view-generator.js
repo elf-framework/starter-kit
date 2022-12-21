@@ -15,15 +15,23 @@ const JSX_EXT = "tsx";
 const VIEW_PAGE_JSX_EXTENSION = ".page." + JSX_EXT;
 const VIEW_PAGE_MDX_EXTENSION = ".mdx";
 
-function generateHtmlFile(realpath) {
+function generateHtmlFile(realpath, options) {
   if (realpath.endsWith(VIEW_PAGE_JSX_EXTENSION)) {
     // *.page.jsx 파일 기준 생성
-    makeJsxFile(PROJECT_ROOT_DIR, realpath, { layouts, jsxExt: JSX_EXT });
+    makeJsxFile(PROJECT_ROOT_DIR, realpath, {
+      layouts,
+      jsxExt: JSX_EXT,
+      ...options,
+    });
   }
 
   if (realpath.endsWith(VIEW_PAGE_MDX_EXTENSION)) {
     // .mdx 파일 기준 생성
-    makeMdxFile(PROJECT_ROOT_DIR, realpath, { layouts, jsxExt: JSX_EXT });
+    makeMdxFile(PROJECT_ROOT_DIR, realpath, {
+      layouts,
+      jsxExt: JSX_EXT,
+      ...options,
+    });
   }
 }
 
@@ -34,7 +42,7 @@ function isPagesDirectory(path) {
   return path.replace(PROJECT_ROOT_DIR, "").startsWith(PROJECT_PAGES_DIR);
 }
 
-export function autoViewGenerator() {
+export function autoViewGenerator(options) {
   let command, config, rootDir;
   let watcher;
   return [
@@ -62,12 +70,12 @@ export function autoViewGenerator() {
               if (isPagesDirectory(path) === false) return;
 
               console.log("File", path, "has been added");
-              generateHtmlFile(path);
+              generateHtmlFile(path, options);
             })
             .on("change", async function (path) {
               if (isPagesDirectory(path) === false) return;
               //   console.log("File", path, "has been changed");
-              generateHtmlFile(path);
+              generateHtmlFile(path, options);
             })
             .on("error", function (error) {
               console.error("Error happened", error);

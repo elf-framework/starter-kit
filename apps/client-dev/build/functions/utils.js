@@ -1,4 +1,7 @@
 import fm from "front-matter";
+// import parse from "remark-parse";
+// import { unified } from "unified";
+
 // import * as glob from "glob";
 
 import { existsSync, readFileSync, unlinkSync, writeFileSync } from "fs";
@@ -150,7 +153,9 @@ export function getLayoutByPath(layouts, entryRelativeFileName) {
 export function generateMarkdownMetaFile(
   entryRelativeFileName,
   entryFilePath,
-  layouts
+  layouts,
+  mdxParser,
+  unified
 ) {
   const mdxContent = readContent(entryFilePath);
   const mdxResult = fm(mdxContent);
@@ -210,18 +215,34 @@ ${mdxResult.body}`;
   const metaContent = readContent(metaFile);
   const localMetaResult = JSON.parse(metaContent);
 
-  // if (JSON.stringify(metaResult) !== metaContent) {
+  // 요약 정리
+  const root = unified().use(mdxParser).parse(mdxResult.body);
+
+  const summary = root.children
+    .filter((it) => it.type === "paragraph")
+    .map((it) =>
+      it.children
+        .filter((it) => it.type === "text")
+        .map((it) => it.value)
+        .join(" ")
+    )
+    .join(" ")
+    .substring(0, 100);
+
+  // write meta file
   writeContent(
     metaFile,
     wrapTime({
       ...localMetaResult,
       ...metaResult,
+      summary,
+      body: mdxResult.body,
     })
   );
-  // }
 
   return {
     ...metaResult,
+    summary,
     body: mdxResult.body,
   };
 }

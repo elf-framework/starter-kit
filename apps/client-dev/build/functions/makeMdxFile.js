@@ -11,7 +11,7 @@ import {
   writeContent,
 } from "./utils";
 
-export function makeMdxFile(rootDir, realpath, options = {}) {
+export async function makeMdxFile(rootDir, realpath, options = {}) {
   const JSX_EXT = options.jsxExt || "jsx";
 
   const docFile = realpath;
@@ -43,10 +43,12 @@ export function makeMdxFile(rootDir, realpath, options = {}) {
 
   // mdx 일 경우 meta.json 파일을 생성한다.
   // create meta.json file
-  const meta = generateMarkdownMetaFile(
+  const meta = await generateMarkdownMetaFile(
     entryRelativeFileName,
     entryFilePath,
-    options.layouts
+    options.layouts,
+    options.mdxParser,
+    options.unified
   );
 
   const oldMetaTags = makeMetaTags(oldMetaInfo);

@@ -29,6 +29,8 @@ export default defineConfig(async () => {
   // const remarkCodeMeta = (await import("remark-code-meta")).default;
   const rehypePrism = (await import("mdx-prism")).default;
   const rehypePrismPlus = (await import("rehype-prism-plus")).default;
+  const remarkParse = (await import("remark-parse")).default;
+  const { unified } = await import("unified");
 
   return {
     appType: "mpa",
@@ -80,7 +82,10 @@ export default defineConfig(async () => {
     },
     plugins: [
       sapa(),
-      autoViewGenerator(),
+      autoViewGenerator({
+        mdxParser: remarkParse,
+        unified,
+      }),
       mdx({
         jsxRuntime: "classic",
         pragma: "sapa.createElementJsx",

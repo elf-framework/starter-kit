@@ -41,4 +41,10 @@ export interface FrontMatter {
     title?: string;
     link?: FrontMatterLink[];
   };
+  date?: string | Date;
+  tags?: string[];
+  account?: {
+    imageUrl?: string;
+    name?: string;
+  };
 }

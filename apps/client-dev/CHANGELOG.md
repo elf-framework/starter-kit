@@ -1,5 +1,11 @@
 # client-dev
 
+## 1.0.51
+
+### Patch Changes
+
+- support markdown summary
+
 ## 1.0.50
 
 ### Patch Changes

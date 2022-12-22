@@ -2,7 +2,7 @@
  * meta data 정의
  */
 
-import { Button } from "@elf-framework/ui";
+import { Button, Card, CardBody, Grid } from "@elf-framework/ui";
 
 import { Body } from "~/component/site/Body";
 import { Header } from "~/component/site/Header";
@@ -29,6 +29,19 @@ export default function Page() {
       <Body>
         <h1>App</h1>
         <h1>fdsafadsfsdf</h1>
+
+        <Grid columns={3} style={{ gap: 10 }}>
+          <Card wide>
+            <CardBody>1</CardBody>
+          </Card>
+          <Card wide>
+            <CardBody>2</CardBody>
+          </Card>
+          <Card wide>
+            <CardBody>3</CardBody>
+          </Card>
+        </Grid>
+
         <h1 style={{ height: 5000 }}>fdsafadsfsdf</h1>
       </Body>
     </div>

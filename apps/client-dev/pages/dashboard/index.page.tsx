@@ -3,6 +3,7 @@
  */
 
 import { Button } from "@elf-framework/ui";
+import { Body } from "~/component/site/Body";
 
 import { Header } from "~/component/site/Header";
 import { FrontMatter } from "~/types/site";
@@ -14,10 +15,10 @@ export const frontmatter: FrontMatter = {
 
 export default function Page() {
   return (
-    <div class="page" style={{ paddingTop: 50 }}>
+    <div class="page">
       <Header>
-        <h3>Dashboard Header</h3>
-        <div>center</div>
+        <h3>Base Header</h3>
+        <div></div>
         <div>
           Buttons:{" "}
           <Button size="small" variant="primary">
@@ -25,6 +26,8 @@ export default function Page() {
           </Button>
         </div>
       </Header>
+      <Body>
+
       <h1>Dashboard</h1>
       <h1>fdsafadsfsdf</h1>
       <h1>fdsafadsfsdf</h1>
@@ -57,6 +60,7 @@ export default function Page() {
       <h1>fdsafadsfsdf</h1>
       <h1>fdsafadsfsdf</h1>
       <h1>fdsafadsfsdf</h1>
+      </Body>
     </div>
   );
 }

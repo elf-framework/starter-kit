@@ -1,5 +1,11 @@
 # client-dev
 
+## 1.0.54
+
+### Patch Changes
+
+- update card style
+
 ## 1.0.53
 
 ### Patch Changes

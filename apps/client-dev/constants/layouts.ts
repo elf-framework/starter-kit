@@ -5,6 +5,7 @@ import { ILayouts } from "~/types/site";
  */
 export const layouts: ILayouts = {
   "pages/article": "ArticleReadLayout",
+  "pages/dashboard": "DashboardReadLayout",
   "pages/blog": "BlogReadLayout",
   "pages/main": "HomeLayout",
   "pages/document": "DocumentReadLayout",

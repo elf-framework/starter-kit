@@ -10,7 +10,7 @@ const menu: MenuItem[] = [
   },
   {
     type: "link",
-    title: "Feature Page",
+    title: "Features",
     category: "/page",
     link: url("page/"),
   },
@@ -31,6 +31,12 @@ const menu: MenuItem[] = [
     title: "Blog",
     category: "/blog",
     link: url("blog/"),
+  },
+  {
+    type: "link",
+    title: "Dashboard",
+    category: "/dashboard",
+    link: url("dashboard/"),
   },
   {
     type: "link",

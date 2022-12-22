@@ -1,5 +1,11 @@
 # client-dev
 
+## 1.0.52
+
+### Patch Changes
+
+- add Header component
+
 ## 1.0.51
 
 ### Patch Changes

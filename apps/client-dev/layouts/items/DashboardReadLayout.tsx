@@ -1,16 +1,16 @@
 import type { ContentType } from "@elf-framework/sapa";
 
 import { SimpleLayout } from "~/component/layout/simple/SimpleLayout";
-import menu from "~/constants/menu/article-sidebar-menu";
+import menu from "~/constants/menu/dashboard-sidebar-menu";
 
-interface ArticleReadLayoutProps {
+interface DashboardReadLayoutProps {
   content: ContentType;
 }
 
-export function ArticleReadLayout({
+export function DashboardReadLayout({
   content,
   ...extraProps
-}: ArticleReadLayoutProps) {
+}: DashboardReadLayoutProps) {
   return (
     <SimpleLayout {...extraProps} title="Article" menu={menu}>
       {content}

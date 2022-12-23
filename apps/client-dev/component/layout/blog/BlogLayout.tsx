@@ -1,14 +1,10 @@
 import { Avatar, Badge, Flex } from "@elf-framework/ui";
 
 import "./BlogLayout.scss";
+import { BlogSidebar } from "./BlogSidebar";
 
 import { Logo } from "~/component/Logo";
 import { PageTools } from "~/component/PageTools";
-import currentBlogList from "~/data/current-blog-list";
-
-const meta = {
-  currentBlogList,
-};
 
 interface BlogLayoutProps {
   content: any;
@@ -92,28 +88,7 @@ export function BlogLayout({
                     position: "relative",
                   }}
                 >
-                  <div
-                    class="blog-sidebar"
-                    style={{
-                      position: "sticky",
-                      top: 20,
-                      flex: "none",
-                      width: 240,
-                      backgroundColor: "var(--color-background-default)",
-                      border: "1px solid var(--color-gray-9)",
-                      borderRadius: 10,
-                      padding: 10,
-                    }}
-                  >
-                    <div class="blog-sidebar-title">Recent Posts</div>
-                    <div class="blog-sidebar-list">
-                      {meta.currentBlogList.map((it) => (
-                        <div class="blog-sidebar-item">
-                          <a href={it.link}>{it.title}</a>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  <BlogSidebar />
                 </div>
               </Flex>
             </div>

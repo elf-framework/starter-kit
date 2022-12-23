@@ -4,6 +4,7 @@ import "./Site.scss";
 
 import { MarkdownPage } from "~/component/MarkdownPage";
 import LayoutManager from "~/layouts/LayoutManager";
+import { Body } from "./Body";
 
 interface SiteProps {
   layout?: string;
@@ -29,13 +30,11 @@ export function Site({
   // MDX 기반 페이지 설정
   if (CurrentPage.name === "MDXContent") {
     content = (
-      <MarkdownPage page={CurrentPage} filename={filename} {...props} />
+      <Body>
+        <MarkdownPage page={CurrentPage} filename={filename} {...props} />
+      </Body>
     );
   }
 
-  return (
-    <CurrentLayout {...props}>
-      <div>{content}</div>
-    </CurrentLayout>
-  );
+  return <CurrentLayout {...props}>{content}</CurrentLayout>;
 }

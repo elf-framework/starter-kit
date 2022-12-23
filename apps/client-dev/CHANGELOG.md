@@ -1,5 +1,14 @@
 # client-dev
 
+## 1.0.55
+
+### Patch Changes
+
+- Modify table of contents for markdown
+  support to import meta.json
+  support to generate links in markdown
+  support to Header, Body style
+
 ## 1.0.54
 
 ### Patch Changes

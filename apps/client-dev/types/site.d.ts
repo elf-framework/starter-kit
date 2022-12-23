@@ -47,4 +47,21 @@ export interface FrontMatter {
     imageUrl?: string;
     name?: string;
   };
+
+  displayLinks?: boolean;
+  /**
+   * links to other pages
+   */
+  links?: {
+    /**
+     * url of the link
+     */
+    url: string;
+
+    /**
+     * title of the link
+     * @default url
+     */
+    title: string;
+  }[];
 }

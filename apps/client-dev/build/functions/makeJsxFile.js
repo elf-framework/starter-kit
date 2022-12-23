@@ -76,6 +76,7 @@ export async function makeJsxFile(rootDir, realpath, options = {}) {
       filename: entryRelativeFileName,
       applicationFilePath:
         "./" + entryBaseName.replace("." + JSX_EXT, ".page." + JSX_EXT),
+      metaFilePath: "./" + entryBaseName.replace("." + JSX_EXT, ".meta.json"),
     });
   }
 

@@ -7,6 +7,7 @@ import { useTheme } from "~/component/hooks/useTheme";
 import { Logo } from "~/component/Logo";
 import { Navigation } from "~/component/Navigation";
 import { PageSelectTools } from "~/component/PageSelectTools";
+import { Body } from "~/component/site/Body";
 import { ThemeButton } from "~/component/utils/theme-button/ThemeButton";
 
 const cssProperties = makeCssVariablePrefixMap("--simple-layout", {
@@ -59,8 +60,7 @@ export function SimpleLayout({
         <div class="sidebar-area">{sidebar}</div>
       </View>
       <View class="layout-content">
-        <div>{content}</div>
-
+        {content}
         {/* <Footer /> */}
       </View>
     </div>

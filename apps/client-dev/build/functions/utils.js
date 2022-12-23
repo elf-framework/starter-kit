@@ -148,6 +148,19 @@ export function getLayoutByPath(layouts, entryRelativeFileName) {
   return layout;
 }
 
+export function collectLinks(markdownRoot, links) {
+  (markdownRoot.children || []).forEach((node) => {
+    if (node.type === "link") {
+      links.push({
+        title: node.title || node.children[0].value,
+        url: node.url,
+      });
+    } else {
+      collectLinks(node, links);
+    }
+  });
+}
+
 // entryFilePath: realPath
 // file: relative path
 export function generateMarkdownMetaFile(
@@ -218,6 +231,9 @@ ${mdxResult.body}`;
   // 요약 정리
   const root = unified().use(mdxParser).parse(mdxResult.body);
 
+  const links = [];
+  collectLinks(root, links);
+
   const summary = root.children
     .filter((it) => it.type === "paragraph")
     .map((it) =>
@@ -236,6 +252,7 @@ ${mdxResult.body}`;
       ...localMetaResult,
       ...metaResult,
       summary,
+      links,
       body: mdxResult.body,
     })
   );
@@ -243,6 +260,7 @@ ${mdxResult.body}`;
   return {
     ...metaResult,
     summary,
+    links,
     body: mdxResult.body,
   };
 }

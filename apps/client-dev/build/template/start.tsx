@@ -2,14 +2,17 @@ import { start } from "@elf-framework/sapa";
 
 // real view page
 import Page, * as frontmatter from "{{applicationFilePath}}";
+import metaJSON from "{{metaFilePath}}";
 import { Site } from "~/component/site/Site";
-import { FrontMatter } from "~/types/site";
+
+const newProps = {
+  ...metaJSON,
+  ...frontmatter,
+};
 
 const filename = "{{filename}}";
 
-const targetInfo = frontmatter as FrontMatter;
-
-const site = <Site filename={filename} page={Page} {...targetInfo} />;
+const site = <Site filename={filename} page={Page} {...newProps} />;
 
 start(site, {
   container: document.getElementById("app"),

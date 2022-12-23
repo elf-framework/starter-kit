@@ -1,6 +1,6 @@
 {
   "name": "client-dev",
-  "version": "1.0.54",
+  "version": "1.0.55",
   "private": true,
   "description": "",
   "main": "index.js",
@@ -23,7 +23,7 @@
     "@elf-framework/design-system": "^0.0.128",
     "@elf-framework/design-tokens": "^0.0.113",
     "@elf-framework/icon": "^0.0.12",
-    "@elf-framework/sapa": "^0.0.125",
+    "@elf-framework/sapa": "^0.0.130",
     "@elf-framework/ui": "^0.0.128",
     "github-markdown-css": "^5.1.0",
     "mermaid": "^9.3.0"
@@ -51,7 +51,7 @@
     "unified": "^10.1.2",
     "vite": "^4.0.3",
     "vite-plugin-sapa": "^0.0.10",
-    "vite-plugin-ssr": "^0.4.64",
+    "vite-plugin-ssr": "^0.4.65",
     "vitest": "0.26.2"
   }
 }

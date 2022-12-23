@@ -3,8 +3,8 @@
  */
 
 import { Button } from "@elf-framework/ui";
-import { Body } from "~/component/site/Body";
 
+import { Body } from "~/component/site/Body";
 import { Header } from "~/component/site/Header";
 import { FrontMatter } from "~/types/site";
 
@@ -27,39 +27,38 @@ export default function Page() {
         </div>
       </Header>
       <Body>
-
-      <h1>Dashboard</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>Dashboard</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>Dashboard</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>Dashboard</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
-      <h1>fdsafadsfsdf</h1>
+        <h1>Dashboard</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>Dashboard</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>Dashboard</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>Dashboard</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
+        <h1>fdsafadsfsdf</h1>
       </Body>
     </div>
   );

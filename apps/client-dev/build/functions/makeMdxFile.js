@@ -69,6 +69,7 @@ export async function makeMdxFile(rootDir, realpath, options = {}) {
     writeContent(startJsxFile, startTemplate, {
       filename: entryRelativeFileName,
       applicationFilePath: "./" + entryFileName + ".mdx",
+      metaFilePath: "./" + entryFileName + ".meta.json",
     });
   }
 }

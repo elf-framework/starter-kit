@@ -1,3 +1,7 @@
+@import "github-markdown-css/github-markdown-light.css";
+@import "~/component/utils/prism/themes/prism-vsc-dark-plus.css";
+@import "~/component/utils/prism/rehype-prism-plus/prism-plus.css";
+
 .markdown-page {
 
     margin: 0 auto;
@@ -6,10 +10,7 @@
     // padding: 32px 48px;
     // padding-right: 0px;
     box-sizing: border-box;
-
-    p {
-        font-size: 16px !important;
-    }
+    font-size: 14px;
 
     > .markdown-page-content {
         display: flex;
@@ -33,11 +34,37 @@
 
             h1,h2,h3,h4,h5,h6 {
                 padding: 5px;
+                margin: 0px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                position: relative;
+
+                > a {
+                    display: none;
+                    position: absolute;
+                    left: -0.6em;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    color: inherit;
+                    font-size: inherit;
+                    text-decoration: none;
+                }
+
+                &:hover {
+                    > a {
+                        display: inline-block;
+
+                        &:hover {
+                            color: var(--color-purple-7);
+                        }
+                    }
+                }
+
             }
 
             *:target {
                 position: relative;
-                color: blue;
+                // color: blue;
 
                 &::before {
                     content: "";
@@ -47,6 +74,16 @@
                     width: 100%;
                     height: 100%;
                     background-color: linear-gradient(to right, white, black);
+                }
+            }
+
+            .content-inner {
+                > p:first-child {
+                    margin-top: 0px;
+                }
+
+                img {
+                    max-width: 100%;
                 }
             }
         }
@@ -62,7 +99,7 @@
 
 
     .filename {
-        text-align: right;
+        // text-align: right;
         color: inherit;
 
         &:last-child {
@@ -70,8 +107,9 @@
         }
 
         a {
-            color: var(--color-text-header-default);
+            color: var(--color-primary);
             text-underline-offset: 10px;
+            text-decoration: none;
         }
 
     }
@@ -121,7 +159,7 @@
     }
 
     h1 {
-
+        font-size: 32px;
         &:first-child {
             margin-top: 0px;
         }
@@ -132,14 +170,23 @@
         color: var(--color-text-header-default);
     }
     h2 {
-        // border-bottom: 0px;
-        padding-bottom: 20px;
-        margin-top: 30px;
-        margin-bottom: 30px;
+        font-size: 26px;
     }
 
-    p {
+    h3 {
         font-size: 20px;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
+
+    h5 {
+        font-size: 16px;
+    }
+
+    h6 {
+        font-size: 14px;
     }
 
     table {
@@ -166,6 +213,98 @@
             background-color: var(--elf--table-tbody-background-color) !important;
         
         }
+    }
+
+
+    pre[class*="language-"] {
+        border-radius: 6px;
+    }
+
+    pre[class*="language-"] {
+        position: relative;
+        &::before {
+            color: var(--color-text-header-default);
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: block;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            box-sizing: border-box;
+            padding: 5px 10px;
+        }
+    }
+
+    pre.language-js::before {
+        content: "JavaScript";
+    }
+
+    pre.language-ts::before {
+        content: "TypeScript";
+    }
+
+    pre.language-json::before {
+        content: "JSON";
+    }
+
+    pre.language-html::before {
+        content: "HTML";
+    }
+
+    pre.language-css::before {
+        content: "CSS";
+    }
+
+    pre.language-scss::before {
+        content: "SCSS";
+    }
+
+    pre.language-markdown::before {
+        content: "Markdown";
+    }
+
+    pre.language-diff::before {
+        content: "Diff";
+    }
+
+    pre.language-xml::before {
+        content: "XML";
+    }
+
+    pre.language-yaml::before {
+        content: "YAML";
+    }
+
+    pre.language-text::before {
+        content: "Text";
+    }
+
+    pre.language-graphql::before {
+        content: "GraphQL";
+    }
+
+    pre.language-sql::before {
+        content: "SQL";
+    }
+
+    pre.language-elm::before {
+        content: "Elm";
+    }
+
+    pre.language-elm::before {
+        content: "Elm";
+    }
+
+    blockquote {
+        border-left: 2px solid var(--color-gray-5);
+        padding-left: 20px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        color: var(--color-gray-7);
+        font-size: 1.4rem;
     }
 
 }

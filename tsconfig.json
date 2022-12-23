@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
-        "jsx": "react",
         "module": "ESNext",
         "noImplicitAny": true,
+        "skipLibCheck": true,
         "removeComments": true,
         "preserveConstEnums": true,
         "moduleResolution": "node",

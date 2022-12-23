@@ -1,16 +1,30 @@
 {
+    "extends": "@starter-kit/config/tsconfig.json",
     "compilerOptions": {
         "jsx": "react",
+        "jsxFactory": "createElementJsx",
+        // "jsxFragmentFactory": "FragmentInstance",
+        "lib": ["ESNext", "DOM", "DOM.Iterable"],
         "module": "ESNext",
+        "target": "ESNext",
+        "esModuleInterop": true,
         "noImplicitAny": true,
+        "skipLibCheck": true,
         "removeComments": true,
+        "isolatedModules": true,
         "preserveConstEnums": true,
         "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "useDefineForClassFields": true,
+        "noEmit": true,
+        "sourceMap": true,
         "baseUrl": ".",
+        "types": ["mdx", "vite/client"],
+        "typeRoots": ["./types"],
         "paths": {
-            "~/*": [
-                "src/*"
-            ]
+            "~/*": ["./*"],
         }
     },
+    "include": ["**/*.ts","**/*.tsx", "tests/**/*.ts", "tests/**/*.tsx", "build/functions/Visitor.js", "build/functions/utils.js", "build/functions/makeMdxFile.js", "build/functions/makeJsxFile.js"],
+    "exclude": ["node_modules", ".vscode"],
 }

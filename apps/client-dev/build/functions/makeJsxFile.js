@@ -1,8 +1,5 @@
-import * as acorn from "acorn";
-import acornJsx from "acorn-jsx";
+import * as ts from "typescript";
 
-// var jsx = require("acorn-jsx");
-// var JSXParser = acorn.Parser.extend(jsx());
 import { existsSync } from "fs";
 import { basename } from "path";
 
@@ -21,9 +18,9 @@ import { Visitor } from "./Visitor";
 
 // console.log(acorn, acornJsx);
 
-var JSXParser = acorn.Parser.extend(acornJsx());
+// const JSXParser = acorn.Parser.extend(acornJsx());
 
-var visitor = new Visitor();
+const visitor = new Visitor();
 
 /**
  * *.page.jsx 파일은 page 를 렌더링 하기 위한 root 로 사용된다.
@@ -40,19 +37,21 @@ var visitor = new Visitor();
  * @param {*} realpath
  * @returns
  */
-export async function makeJsxFile(rootDir, realpath, options) {
+export async function makeJsxFile(rootDir, realpath, options = {}) {
+  const JSX_EXT = options.jsxExt || "jsx";
+
   const docFile = realpath;
   const relativeDocFile = docFile.replace(rootDir, "");
 
-  let entryRelativeFileName = relativeDocFile;
-  let entryFilePath = docFile;
-  let entryBaseName = basename(entryRelativeFileName).replace(".page", "");
-  let htmlFile = getHtmlFilePath(entryFilePath, 1);
-  let startJsxFile = getJsxFilePath(entryFilePath, "", 1);
-  let pageJsxFile = getJsxFilePath(entryFilePath);
+  const entryRelativeFileName = relativeDocFile;
+  const entryFilePath = docFile;
+  const entryBaseName = basename(entryRelativeFileName).replace(".page", "");
+  const htmlFile = getHtmlFilePath(entryFilePath, 1);
+  const startJsxFile = getJsxFilePath(entryFilePath, JSX_EXT, 1);
+  const pageJsxFile = getJsxFilePath(entryFilePath, JSX_EXT);
   const metaFile = getMetaFilePath(entryFilePath, 1);
 
-  if (realpath.endsWith(".page.jsx") === false) {
+  if (realpath.endsWith(".page." + JSX_EXT) === false) {
     // throw new Error("not page file");
     return;
   }
@@ -61,10 +60,10 @@ export async function makeJsxFile(rootDir, realpath, options) {
   const indexTemplate = readContent("./build/template/index.html");
 
   // jsx page template
-  const startTemplate = readContent("./build/template/page.start.jsx");
+  const startTemplate = readContent("./build/template/page.start." + JSX_EXT);
 
   // page template
-  const pageTemplate = readContent("./build/template/page.jsx");
+  const pageTemplate = readContent("./build/template/page." + JSX_EXT);
 
   // create index.html file
   const title = getTitle(entryFilePath, 1);
@@ -75,7 +74,9 @@ export async function makeJsxFile(rootDir, realpath, options) {
   if (existsSync(startJsxFile) === false) {
     writeContent(startJsxFile, startTemplate, {
       filename: entryRelativeFileName,
-      applicationFilePath: "./" + entryBaseName.replace(".jsx", ".page.jsx"),
+      applicationFilePath:
+        "./" + entryBaseName.replace("." + JSX_EXT, ".page." + JSX_EXT),
+      metaFilePath: "./" + entryBaseName.replace("." + JSX_EXT, ".meta.json"),
     });
   }
 
@@ -88,7 +89,7 @@ export async function makeJsxFile(rootDir, realpath, options) {
     });
   }
 
-  let metaInfo = {
+  const metaInfo = {
     title,
   };
 
@@ -103,13 +104,17 @@ export async function makeJsxFile(rootDir, realpath, options) {
       content = readContent(pageJsxFile);
     }
 
-    const parsed = JSXParser.parse(content, {
-      ecmaVersion: 2020,
-      sourceType: "module",
+    // parsing tsx file
+    //
+    const program = ts.createProgram([pageJsxFile], {
+      jsx: ts.JsxEmit.React,
     });
 
-    visitor.start(parsed);
-    Object.assign(metaInfo, visitor.toJSON().frontmatter || {});
+    // ast 를 생성한다.
+    const sourceFile = program.getSourceFile(pageJsxFile);
+
+    const obj = visitor.start(sourceFile);
+    Object.assign(metaInfo, obj);
   }
 
   const oldMetaInfo = makeMetaTags(JSON.parse(readContent(metaFile) || "{}"));

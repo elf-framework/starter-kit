@@ -2,5 +2,7 @@
     "createdAt": 1671081383380,
     "title": "최신 블로그 리스트",
     "layout": "BlogReadLayout",
-    "updatedAt": 1671097109035
+    "updatedAt": 1671602456438,
+    "body": "import currentBlogList from '~/data/current-blog-list';\n\n{console.log(currentBlogList)}\n\n<div>\n{currentBlogList.map((blog) => (\n    <div>\n        <h2><a href={blog.link}>{blog?.title}</a> &nbsp;\n            {blog.date || blog.createdAt ? \n                <small style={{color: \"var(--color-gray-5)\", fontSize: \"1rem\"}}>\n                    {new Intl.DateTimeFormat('en-US').format(new Date(blog?.date || blog?.createdAt))}\n                </small> \n                : undefined\n            }\n        </h2>\n        <p>{blog?.summary}</p>\n    </div>\n))}\n</div>\n",
+    "summary": "import currentBlogList from '~/data/current-blog-list'; {console.log(currentBlogList)}"
 }

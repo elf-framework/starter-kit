@@ -47,7 +47,7 @@
             gap: 20px;
             min-height: 0vh;
             border: 1px solid var(--color-gray-9);
-            padding: 0px 40px;
+            // padding: 0px 40px;
             background-color: var(--color-background-default);
             margin-top: 30px;
             border-radius: 10px;
@@ -59,6 +59,7 @@
         }
 
         .blog-header {
+            padding: 0px 40px;
             .blog-title {
                 font-size: 2.5rem;
                 font-weight: 700;

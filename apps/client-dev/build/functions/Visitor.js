@@ -1,96 +1,59 @@
+import * as ts from "typescript";
+
 export class Visitor {
-  start(node) {
-    this.collects = [];
-    this.visitNode(node);
+  start(sourceFile) {
+    const metaInfo = {};
+    const nodes = sourceFile?.statements || [];
+
+    // export 대상을 찾는다.
+    nodes.forEach((node) => {
+      if (node?.declarationList?.declarations) {
+        node.declarationList.declarations.forEach((it) => {
+          const obj = this.visitNode(it);
+
+          Object.assign(metaInfo, obj);
+        });
+      }
+    });
+
+    return metaInfo;
   }
 
-  /* Deal with nodes in an array */
-  visitNodes(nodes) {
-    for (const node of nodes) this.visitNode(node);
+  visitProperty(properties) {
+    const metaInfo = {};
+    properties.forEach((property) => {
+      const key = property.name.escapedText;
+      let value = {};
+
+      switch (property.initializer.kind) {
+        case ts.SyntaxKind.ObjectLiteralExpression:
+          value = this.visitProperty(property.initializer.properties);
+          metaInfo[key] = value;
+          break;
+        case ts.SyntaxKind.ArrayLiteralExpression:
+          metaInfo[key] = [];
+          property.initializer.elements.forEach((element) => {
+            metaInfo[key].push(this.visitProperty(element.properties));
+          });
+
+          break;
+        default:
+          value = property.initializer.text;
+          metaInfo[key] = value;
+          break;
+      }
+    });
+
+    return metaInfo;
   }
-  /* Dispatch each type of node to a function */
+
   visitNode(node) {
-    // console.log(node);
-    switch (node.type) {
-      case "Program":
-        return this.visitProgram(node);
-      case "ExportNamedDeclaration":
-        return this.visitExportNamedDeclaration(node);
-      case "VariableDeclaration":
-        return this.visitVariableDeclaration(node);
-      case "VariableDeclarator":
-        return this.visitVariableDeclarator(node);
-      case "Identifier":
-        return this.visitIdentifier(node);
-      case "Literal":
-        return this.visitLiteral(node);
+    if (node.name.escapedText === "frontmatter") {
+      const properties = node.initializer.properties;
+
+      return this.visitProperty(properties);
     }
-  }
 
-  getArrayExpression(node) {
-    const arr = [];
-
-    node.elements.forEach((it) => {
-      if (it.type === "ObjectExpression") {
-        arr.push(this.getObjectExpression(it));
-      } else if (it.type === "ArrayExpression") {
-        arr.push(this.getArrayExpression(it));
-      } else {
-        arr.push(it.value);
-      }
-    });
-
-    return arr;
-  }
-
-  getObjectExpression(node) {
-    const obj = {};
-    node.properties.forEach((prop) => {
-      if (prop.value.type === "ObjectExpression") {
-        obj[prop.key.name] = this.getObjectExpression(prop.value);
-      } else if (prop.value.type === "ArrayExpression") {
-        obj[prop.key.name] = this.getArrayExpression(prop.value);
-      } else {
-        obj[prop.key.name] = prop.value.value;
-      }
-    });
-    return obj;
-  }
-
-  /* Functions to deal with each type of node */
-  visitExportNamedDeclaration(node) {
-    node.declaration.declarations.forEach((it) => {
-      if (it.init.type === "Literal") {
-        this.collects.push({
-          [it.id.name]: it.init.value,
-        });
-      } else if (it.init.type === "ObjectExpression") {
-        const obj = this.getObjectExpression(it.init);
-        this.collects.push({
-          [it.id.name]: obj,
-        });
-      }
-    });
-    // return this.visitNode(node.declaration);
-  }
-  visitProgram(node) {
-    return this.visitNodes(node.body);
-  }
-  visitVariableDeclaration(node) {
-    return this.visitNodes(node.declarations);
-  }
-  visitVariableDeclarator(node) {
-    this.visitNode(node.id);
-    return this.visitNode(node.init);
-  }
-  visitIdentifier(node) {
-    return node.name;
-  }
-  visitLiteral(node) {
-    return node.value;
-  }
-
-  toJSON() {
-    return Object.assign(...this.collects);
+    return {};
   }
 }

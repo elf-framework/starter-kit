@@ -1,10 +1,6 @@
 {
-    "createdAt": 1671210180084,
+    "createdAt": 1671536666367,
     "title": "Test",
     "layout": "ApplicationReadLayout",
-    "meta": {
-        "description": "Test",
-        "title": "Test"
-    },
-    "updatedAt": 1671210180084
+    "updatedAt": 1671536672782
 }

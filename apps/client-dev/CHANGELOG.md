@@ -1,5 +1,62 @@
 # client-dev
 
+## 1.0.56
+
+### Patch Changes
+
+- support mermaid
+
+## 1.0.55
+
+### Patch Changes
+
+- Modify table of contents for markdown
+  support to import meta.json
+  support to generate links in markdown
+  support to Header, Body style
+
+## 1.0.54
+
+### Patch Changes
+
+- update card style
+
+## 1.0.53
+
+### Patch Changes
+
+- update Header, Body component
+
+## 1.0.52
+
+### Patch Changes
+
+- add Header component
+
+## 1.0.51
+
+### Patch Changes
+
+- support markdown summary
+
+## 1.0.50
+
+### Patch Changes
+
+- remove acorn acorn-jsx package
+
+## 1.0.49
+
+### Patch Changes
+
+- Refactoring to typescript
+
+## 1.0.48
+
+### Patch Changes
+
+- update typescript environment
+
 ## 1.0.47
 
 ### Patch Changes

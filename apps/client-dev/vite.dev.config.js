@@ -29,6 +29,9 @@ export default defineConfig(async () => {
   // const remarkCodeMeta = (await import("remark-code-meta")).default;
   const rehypePrism = (await import("mdx-prism")).default;
   const rehypePrismPlus = (await import("rehype-prism-plus")).default;
+  const remarkParse = (await import("remark-parse")).default;
+  const { unified } = await import("unified");
+  const remarkMermaidDataurl = (await import("remark-mermaid-dataurl")).default;
 
   return {
     appType: "mpa",
@@ -43,6 +46,7 @@ export default defineConfig(async () => {
       },
     },
     esbuild: {
+      jsx: "transform",
       jsxFactory: "createElementJsx",
       jsxFragment: "FragmentInstance",
       jsxInject: `import { createElementJsx, FragmentInstance } from "@elf-framework/sapa"`,
@@ -67,25 +71,23 @@ export default defineConfig(async () => {
       },
       extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", "md", "mdx"],
     },
-    optimizeDeps: {
-      exclude: [
-        "@elf-framework/sapa",
-        "@elf-framework/ui",
-        "@elf-framework/icon",
-        "@elf-framework/sapa-router",
-        "@elf-framework/design-tokens",
-        "@elf-framework/design-system",
-      ],
-    },
     plugins: [
       sapa(),
-      autoViewGenerator(),
+      autoViewGenerator({
+        mdxParser: remarkParse,
+        unified,
+      }),
       mdx({
         jsxRuntime: "classic",
         pragma: "sapa.createElementJsx",
         pragmaFrag: "sapa.FragmentInstance",
         pragmaImportSource: "@elf-framework/sapa",
-        remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
+        remarkPlugins: [
+          remarkGfm,
+          remarkFrontmatter,
+          remarkMdxFrontmatter,
+          remarkMermaidDataurl,
+        ],
         rehypePlugins: [rehypePrism, rehypePrismPlus],
       }),
     ],

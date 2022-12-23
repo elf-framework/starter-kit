@@ -2,12 +2,20 @@
     "createdAt": 1671084222861,
     "title": "Article",
     "layout": "ArticleReadLayout",
-    "tableOfContents": false,
+    "tableOfContents": true,
     "menuLink": false,
     "editableSourceLink": false,
-    "updatedAt": 1671413556936,
+    "updatedAt": 1671772059949,
     "meta": {
         "description": "Article",
         "keywords": "Article"
-    }
+    },
+    "summary": "Document 가 아닌  정보전달을 좀 더 가볍게 할 수 있는 컨텐츠 들은 Article 로 묶습니다. 말도 마세요. pages/article/ 에서 관리합니다.  위의 링크는 ",
+    "body": "# {title}\n\n# Yellow\n## Article Title\n\n### Article Title 3\n \n#### Article 안녕 ~ \n\n##### Article\n\n###### Article\n\n## Article\n\nDocument 가 아닌  정보전달을 좀 더 가볍게 할 수 있는 컨텐츠 들은 Article 로 묶습니다. \n\n말도 마세요.\n\npages/article/ 에서 관리합니다.\n\n[go to Document](/document/)\n\n위의 링크는 어떻게 가면 될까요?",
+    "links": [
+        {
+            "title": "go to Document",
+            "url": "/document/"
+        }
+    ]
 }

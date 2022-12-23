@@ -1,7 +1,7 @@
 {
     "createdAt": 1671072784171,
     "title": "블로그를  처음 적어보아요.",
-    "date": "2022-12-16T00:00:00.000Z",
+    "date": "2022-12-15T00:00:00.000Z",
     "layout": "BlogReadLayout",
     "tags": [
         "hello",
@@ -13,5 +13,8 @@
         "imageUrl": "https://avatars.githubusercontent.com/u/1234567?v=4",
         "name": "elf"
     },
-    "updatedAt": 1671073785215
+    "updatedAt": 1671782251290,
+    "body": "안녕 여긴 블로그야 그러고보니 컨텐츠가 바뀌면 그것도 정리를 해야하는데 말이지\n\n어떻게 해야할지 모르겠어 \n\n니가 방법을 제시해줘  알겠어. 일단 내가 해볼게\n\n코드 적는거 그만하고 \n\n\n## Hello World\n\n```js\nconsole.log('Hello World')\n```\n\n## Hello World\n\n```js\nconsole.log('Hello World')\n```\n\n블로글 글을 생성해보자. \n\n## Hello World\n\n```js showLineNumbers\nconsole.log('Hello World')\n```\n\n# Code\n\n```bash\njourney\n    title My working day\n    section Go to work\n      Make tea: 5: Me\n      Go upstairs: 3: Me\n      Do work: 1: Me, Cat\n    section Go home\n      Go downstairs: 5: Me\n      Sit down: 5: Me\n```\n\n\n```mermaid\n\njourney\n    title My working day\n    section Go to work\n      Make tea: 5: Me\n      Go upstairs: 3: Me\n      Do work: 1: Me, Cat\n    section Go home\n      Go downstairs: 5: Me\n      Sit down: 5: Me\n\n```",
+    "summary": "안녕 여긴 블로그야 그러고보니 컨텐츠가 바뀌면 그것도 정리를 해야하는데 말이지 어떻게 해야할지 모르겠어 니가 방법을 제시해줘  알겠어. 일단 내가 해볼게 코드 적는거 그만하고 블로",
+    "links": []
 }

@@ -1,4 +1,7 @@
 import fm from "front-matter";
+// import parse from "remark-parse";
+// import { unified } from "unified";
+
 // import * as glob from "glob";
 
 import { existsSync, readFileSync, unlinkSync, writeFileSync } from "fs";
@@ -51,12 +54,8 @@ export function getHtmlFilePath(realPath, depth = 0) {
   return getFilePath(realPath, ".html", depth);
 }
 
-export function getJsxFilePath(realPath, ext = "", depth = 0) {
-  return getFilePath(
-    realPath,
-    "." + [ext, "jsx"].filter(Boolean).join("."),
-    depth
-  );
+export function getJsxFilePath(realPath, ext = "jsx", depth = 0) {
+  return getFilePath(realPath, "." + [ext].filter(Boolean).join("."), depth);
 }
 
 export function getTitle(realPath, depth = 0) {
@@ -149,12 +148,27 @@ export function getLayoutByPath(layouts, entryRelativeFileName) {
   return layout;
 }
 
+export function collectLinks(markdownRoot, links) {
+  (markdownRoot.children || []).forEach((node) => {
+    if (node.type === "link") {
+      links.push({
+        title: node.title || node.children[0].value,
+        url: node.url,
+      });
+    } else {
+      collectLinks(node, links);
+    }
+  });
+}
+
 // entryFilePath: realPath
 // file: relative path
 export function generateMarkdownMetaFile(
   entryRelativeFileName,
   entryFilePath,
-  layouts
+  layouts,
+  mdxParser,
+  unified
 ) {
   const mdxContent = readContent(entryFilePath);
   const mdxResult = fm(mdxContent);
@@ -214,18 +228,39 @@ ${mdxResult.body}`;
   const metaContent = readContent(metaFile);
   const localMetaResult = JSON.parse(metaContent);
 
-  // if (JSON.stringify(metaResult) !== metaContent) {
+  // 요약 정리
+  const root = unified().use(mdxParser).parse(mdxResult.body);
+
+  const links = [];
+  collectLinks(root, links);
+
+  const summary = root.children
+    .filter((it) => it.type === "paragraph")
+    .map((it) =>
+      it.children
+        .filter((it) => it.type === "text")
+        .map((it) => it.value)
+        .join(" ")
+    )
+    .join(" ")
+    .substring(0, 100);
+
+  // write meta file
   writeContent(
     metaFile,
     wrapTime({
       ...localMetaResult,
       ...metaResult,
+      summary,
+      links,
+      body: mdxResult.body,
     })
   );
-  // }
 
   return {
     ...metaResult,
+    summary,
+    links,
     body: mdxResult.body,
   };
 }

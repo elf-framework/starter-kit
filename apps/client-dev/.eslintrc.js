@@ -1,3 +1,3 @@
 module.exports = {
-  ...require("@elf-framework/config/eslint-preset"),
+  ...require("@starter-kit/config/eslint-preset"),
 };

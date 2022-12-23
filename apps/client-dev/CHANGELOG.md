@@ -1,5 +1,11 @@
 # client-dev
 
+## 1.0.57
+
+### Patch Changes
+
+- update dashboard sample
+
 ## 1.0.56
 
 ### Patch Changes

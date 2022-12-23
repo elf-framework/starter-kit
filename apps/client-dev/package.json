@@ -1,6 +1,6 @@
 {
   "name": "client-dev",
-  "version": "1.0.56",
+  "version": "1.0.57",
   "private": true,
   "description": "",
   "main": "index.js",
@@ -20,11 +20,11 @@
   "license": "ISC",
   "dependencies": {
     "@elf-framework/color": "^0.0.116",
-    "@elf-framework/design-system": "^0.0.128",
-    "@elf-framework/design-tokens": "^0.0.113",
+    "@elf-framework/design-system": "^0.0.133",
+    "@elf-framework/design-tokens": "^0.0.133",
     "@elf-framework/icon": "^0.0.12",
     "@elf-framework/sapa": "^0.0.130",
-    "@elf-framework/ui": "^0.0.128",
+    "@elf-framework/ui": "^0.0.133",
     "github-markdown-css": "^5.1.0",
     "mermaid": "^9.3.0"
   },

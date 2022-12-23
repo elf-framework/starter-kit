@@ -26,6 +26,7 @@ export default defineConfig(async () => {
   // const remarkCodeMeta = (await import("remark-code-meta")).default;
   const rehypePrism = (await import("mdx-prism")).default;
   const rehypePrismPlus = (await import("rehype-prism-plus")).default;
+  const remarkMermaidDataurl = (await import("remark-mermaid-dataurl")).default;
 
   return {
     appType: "mpa",
@@ -59,7 +60,12 @@ export default defineConfig(async () => {
         pragma: "sapa.createElementJsx",
         pragmaFrag: "sapa.FragmentInstance",
         pragmaImportSource: "@elf-framework/sapa",
-        remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
+        remarkPlugins: [
+          remarkGfm,
+          remarkFrontmatter,
+          remarkMdxFrontmatter,
+          remarkMermaidDataurl,
+        ],
         rehypePlugins: [rehypePrism, rehypePrismPlus],
       }),
     ],

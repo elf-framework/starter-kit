@@ -1,6 +1,6 @@
 {
   "name": "client-dev",
-  "version": "1.0.55",
+  "version": "1.0.56",
   "private": true,
   "description": "",
   "main": "index.js",
@@ -36,7 +36,6 @@
     "chokidar": "^3.5.3",
     "front-matter": "^4.0.2",
     "glob": "^8.0.3",
-    "mdx-mermaid": "^2.0.0-rc1",
     "mdx-prism": "^0.3.4",
     "postcss": "^8.4.20",
     "rehype-prism-plus": "^1.5.0",
@@ -44,6 +43,7 @@
     "remark-frontmatter": "^4.0.1",
     "remark-gfm": "^3.0.1",
     "remark-mdx-frontmatter": "^2.1.1",
+    "remark-mermaid-dataurl": "^2.0.6",
     "remark-parse": "^10.0.1",
     "remark-rehype": "^10.1.0",
     "sass": "^1.57.1",

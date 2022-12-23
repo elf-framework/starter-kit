@@ -40,9 +40,9 @@ const menu: MenuItem[] = [
   },
   {
     type: "link",
-    title: "Simple",
-    category: "/simple",
-    link: url("simple/"),
+    title: "Markdown",
+    category: "/markdown",
+    link: url("markdown/"),
   },
 
   {

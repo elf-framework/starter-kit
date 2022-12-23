@@ -1,0 +1,26 @@
+{
+    "createdAt": 1671782967329,
+    "title": "Markdown",
+    "layout": "MarkdownReadLayout",
+    "updatedAt": 1671783018915,
+    "summary": "How to use markdown with mermaid",
+    "links": [
+        {
+            "title": "Flowchart",
+            "url": "/markdown/flowchart/"
+        },
+        {
+            "title": "Sequence Diagram",
+            "url": "/markdown/sequence/"
+        },
+        {
+            "title": "Gantt Diagram",
+            "url": "/markdown/gantt/"
+        },
+        {
+            "title": "Class Diagram",
+            "url": "/markdown/class/"
+        }
+    ],
+    "body": "How to use markdown with mermaid\n\n* [Flowchart](/markdown/flowchart/)\n* [Sequence Diagram](/markdown/sequence/)\n* [Gantt Diagram](/markdown/gantt/)\n* [Class Diagram](/markdown/class/)"
+}

@@ -4,16 +4,13 @@ import "./MarkdownPage.scss";
 import { TableOfContents } from "./TableOfContents";
 import { makeId } from "./utils/url";
 
+import github from "~/constants/github";
 import { FrontMatter } from "~/types/site";
 
 function FileEditorLink({ filename }: { filename: string }) {
   return filename ? (
     <div class="filename">
-      <a
-        href={`https://github.com/elf-framework/editor/tree/develop/apps/ui-dev/${filename}`}
-      >
-        [Edit on the github]
-      </a>
+      <a href={`${github.DOCUMENT_ROOT}/${filename}`}>[Edit this page on GitHub]</a>
     </div>
   ) : (
     ""
@@ -22,15 +19,13 @@ function FileEditorLink({ filename }: { filename: string }) {
 
 interface MarkdownPageProps extends FrontMatter {
   page: any;
-  filename?: string;
-  tableOfContents?: boolean;
-  editableSourceLink?: boolean;
 }
 
 function Heading1(props: any) {
   const id = ["1", makeId(props.content.join(""))].join("-");
   return (
     <h1 id={id} class="h1">
+      <a href={`#${id}`}>#</a>
       {props.content}
     </h1>
   );
@@ -110,9 +105,6 @@ export function MarkdownPage({
     <div class="markdown-page">
       <div class="markdown-page-content">
         <div class="content-container">
-          {editableSourceLink ? (
-            <FileEditorLink filename={filename} />
-          ) : undefined}
           <div class="content-inner" ref="$inner">
             {template.children || template}
 

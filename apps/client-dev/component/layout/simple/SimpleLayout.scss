@@ -32,6 +32,7 @@
         background-color: var(--color-background-default);
         display: flex;
         flex-direction: column;
+        flex: none;
 
         > .logo-area {
             flex: none;

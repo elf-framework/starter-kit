@@ -1,20 +1,18 @@
 import { start } from "@elf-framework/sapa";
 
 // real view page
-import Page, * as frontmatter from "{{applicationFilePath}}";
-import metaJSON from "{{metaFilePath}}";
+import Page, * as frontmatter from "./index.mdx";
+import metaJSON from "./index.meta.json";
 import { Site } from "~/component/site/Site";
-
-const filename = "{{filename}}";
 
 const newProps = {
   ...metaJSON,
   ...frontmatter,
-  filename,
-  page: Page,
 };
 
-const site = <Site {...newProps} />;
+const filename = "pages/markdown/index.mdx";
+
+const site = <Site filename={filename} page={Page} {...newProps} />;
 
 start(site, {
   container: document.getElementById("app"),

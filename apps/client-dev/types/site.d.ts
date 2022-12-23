@@ -64,4 +64,20 @@ export interface FrontMatter {
      */
     title: string;
   }[];
+
+  /**
+   * if true, the page will be editable
+   */
+  editableSourceLink?: boolean;
+
+  /**
+   * the filename of the page for editing
+   * @deprecated use editableSourceLink instead
+   */
+  filename?: string;
+
+  /**
+   * if true, the table of contents will be displayed
+   */
+  tableOfContents?: boolean;
 }

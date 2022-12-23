@@ -1,5 +1,11 @@
 # client-dev
 
+## 1.0.56
+
+### Patch Changes
+
+- support mermaid
+
 ## 1.0.55
 
 ### Patch Changes

@@ -50,12 +50,7 @@ export function ApplicationLayout({
         <div class="left">
           <View class="layout-menu">{sidebar}</View>
         </div>
-        <div class="center">
-          <View class="layout-content">
-            {content}
-            {/* <Footer /> */}
-          </View>
-        </div>
+        <div class="center">{content}</div>
         <div class="right">
           <View class="layout-menu">{sidebar}</View>
         </div>

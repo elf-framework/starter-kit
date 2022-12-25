@@ -235,15 +235,21 @@ ${mdxResult.body}`;
   collectLinks(root, links);
 
   const summary = root.children
-    .filter((it) => it.type === "paragraph")
+    .filter((it) => it.type === "paragraph" && it.children.length > 0)
     .map((it) =>
       it.children
-        .filter((it) => it.type === "text")
+        .filter(
+          (it) =>
+            it.type === "text" &&
+            it.value.startsWith("export") === false &&
+            it.value.startsWith("import") === false
+        )
         .map((it) => it.value)
         .join(" ")
     )
     .join(" ")
-    .substring(0, 100);
+    .substring(0, 100)
+    .trim();
 
   // write meta file
   writeContent(

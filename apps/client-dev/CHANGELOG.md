@@ -1,5 +1,11 @@
 # client-dev
 
+## 1.0.59
+
+### Patch Changes
+
+- support custom header in mdx
+
 ## 1.0.58
 
 ### Patch Changes

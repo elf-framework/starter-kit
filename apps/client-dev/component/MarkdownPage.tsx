@@ -10,7 +10,9 @@ import { FrontMatter } from "~/types/site";
 function FileEditorLink({ filename }: { filename: string }) {
   return filename ? (
     <div class="filename">
-      <a href={`${github.DOCUMENT_ROOT}/${filename}`}>[Edit this page on GitHub]</a>
+      <a href={`${github.DOCUMENT_ROOT}/${filename}`}>
+        [Edit this page on GitHub]
+      </a>
     </div>
   ) : (
     ""
@@ -35,6 +37,7 @@ function Heading2(props: any) {
   const id = ["2", makeId(props.content.join(""))].join("-");
   return (
     <h2 id={id} class="h2">
+      <a href={`#${id}`}>#</a>
       {props.content}
     </h2>
   );
@@ -44,6 +47,7 @@ function Heading3(props: any) {
   const id = ["3", makeId(props.content.join(""))].join("-");
   return (
     <h3 id={id} class="h3">
+      <a href={`#${id}`}>#</a>
       {props.content}
     </h3>
   );
@@ -53,6 +57,7 @@ function Heading4(props: any) {
   const id = ["4", makeId(props.content.join(""))].join("-");
   return (
     <h4 id={id} class="h4">
+      <a href={`#${id}`}>#</a>
       {props.content}
     </h4>
   );
@@ -62,6 +67,7 @@ function Heading5(props: any) {
   const id = ["5", makeId(props.content.join(""))].join("-");
   return (
     <h5 id={id} class="h5">
+      <a href={`#${id}`}>#</a>
       {props.content}
     </h5>
   );
@@ -71,6 +77,7 @@ function Heading6(props: any) {
   const id = ["6", makeId(props.content.join(""))].join("-");
   return (
     <h6 id={id} class="h6">
+      <a href={`#${id}`}>#</a>
       {props.content}
     </h6>
   );

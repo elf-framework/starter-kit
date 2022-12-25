@@ -1,3 +1,4 @@
+import type { ContentType } from "@elf-framework/sapa";
 import "@elf-framework/ui/style.css";
 
 import { Body } from "./Body";
@@ -10,12 +11,14 @@ interface SiteProps {
   layout?: string;
   page: any;
   filename?: string;
+  header?: ContentType;
 }
 
 export function Site({
   layout,
   page: CurrentPage,
   filename,
+  header,
   ...props
 }: SiteProps) {
   const CurrentLayout = LayoutManager.get(layout || "BasicLayout");
@@ -30,9 +33,12 @@ export function Site({
   // MDX 기반 페이지 설정
   if (CurrentPage.name === "MDXContent") {
     content = (
-      <Body>
-        <MarkdownPage page={CurrentPage} filename={filename} {...props} />
-      </Body>
+      <div class="page">
+        {header}
+        <Body>
+          <MarkdownPage page={CurrentPage} filename={filename} {...props} />
+        </Body>
+      </div>
     );
   }
 

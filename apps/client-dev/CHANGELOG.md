@@ -1,5 +1,13 @@
 # client-dev
 
+## 1.0.58
+
+### Patch Changes
+
+- update page.tsx template
+  add e-commerce/product page
+  add public/data/api/xxx.json for data api
+
 ## 1.0.57
 
 ### Patch Changes

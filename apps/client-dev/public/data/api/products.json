@@ -1,0 +1,18 @@
+{
+    "data": [
+        {
+            "id": "1",
+            "name": "Santa gift",
+            "description": "Santa gift",
+            "image": "https://www.w3schools.com/howto/img_avatar.png",
+            "price": "100"
+        },
+        {
+            "id": "2",
+            "name": "lego",
+            "description": "lego",
+            "image": "https://www.w3schools.com/howto/img_avatar.png",
+            "price": "200"
+        }
+    ]
+}

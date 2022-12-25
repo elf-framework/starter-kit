@@ -198,9 +198,8 @@
             border: 0px !important;
 
             > th {
-                --elf--table-head-cell-align: flex-start;
           
-                padding: var(--elf--table-head-cell-padding);
+                // padding: var(--elf--table-head-cell-padding);
                 border:0px;
                 font-weight: 500;
                 text-align: var(--elf--table-cell-text-align);

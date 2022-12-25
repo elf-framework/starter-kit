@@ -1,15 +1,16 @@
+/**
+ * meta data 정의
+ */
+
 import { Button, InputEditor } from "@elf-framework/ui";
 
 import { Body } from "~/component/site/Body";
 import { Header } from "~/component/site/Header";
 import { FrontMatter } from "~/types/site";
 
-/**
- * meta data 정의
- */
 export const frontmatter: FrontMatter = {
-  title: "{{title}}",
-  layout: "{{pageLayout}}",
+  title: "E Commerce",
+  layout: "DashboardReadLayout",
 };
 
 export default function Page() {
@@ -31,6 +32,22 @@ export default function Page() {
         <p>
           Please edit this page at
           apps/client-dev/pages/dashboard/e-commerce/index.page.tsx
+        </p>
+
+        <p>
+          <a href="/dashboard/e-commerce/product/">Go to Product page</a>
+        </p>
+
+        <p>
+          <a href="/dashboard/e-commerce/product/create">
+            Go to Product Create page
+          </a>
+        </p>
+
+        <p>
+          <a href="/dashboard/e-commerce/product/1">
+            Go to Product Detail page
+          </a>
         </p>
       </Body>
     </div>

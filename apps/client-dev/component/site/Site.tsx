@@ -1,10 +1,10 @@
 import "@elf-framework/ui/style.css";
 
+import { Body } from "./Body";
 import "./Site.scss";
 
 import { MarkdownPage } from "~/component/MarkdownPage";
 import LayoutManager from "~/layouts/LayoutManager";
-import { Body } from "./Body";
 
 interface SiteProps {
   layout?: string;
@@ -25,7 +25,7 @@ export function Site({
   }
 
   // 기본 페이지 설정 (jsx 기반)
-  let content = <CurrentPage {...props} />;
+  let content = <CurrentPage filename={filename} {...props} />;
 
   // MDX 기반 페이지 설정
   if (CurrentPage.name === "MDXContent") {

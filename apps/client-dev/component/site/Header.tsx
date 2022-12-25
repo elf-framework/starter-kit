@@ -1,7 +1,9 @@
+import type { ContentType } from "@elf-framework/sapa";
 import "./Header.scss";
 
 interface HeaderProps {
-  title: string;
+  content?: ContentType;
+  title?: string;
   sticky?: boolean;
 }
 

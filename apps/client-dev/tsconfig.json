@@ -3,7 +3,7 @@
     "compilerOptions": {
         "jsx": "react",
         "jsxFactory": "createElementJsx",
-        // "jsxFragmentFactory": "FragmentInstance",
+        "jsxFragmentFactory": "FragmentInstance",
         "lib": ["ESNext", "DOM", "DOM.Iterable"],
         "module": "ESNext",
         "target": "ESNext",

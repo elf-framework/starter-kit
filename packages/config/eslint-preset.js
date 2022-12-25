@@ -18,7 +18,7 @@ module.exports = {
     "jsx/uses-factory": [1, { pragma: "JSX" }],
     "jsx/factory-in-scope": 0,
     "jsx/mark-used-vars": 1,
-    "jsx/no-undef": 1,
+    "jsx/no-undef": 0,
     // "react/jsx-boolean-value": ["always"],
     "no-redeclare": 0,
     "import/no-unresolved": 0,
@@ -60,6 +60,7 @@ module.exports = {
     cancelAnimationFrame: true,
     CustomEvent: true,
     navigator: true,
+    createElementJsx: true,
   },
   overrides: [
     {
@@ -67,6 +68,9 @@ module.exports = {
       plugins: ["@typescript-eslint"],
       extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
       parser: "@typescript-eslint/parser",
+      rules: {
+        "no-undef": "off", // ts(2304)
+      },
       parserOptions: {
         project: ["./tsconfig.json"],
       },

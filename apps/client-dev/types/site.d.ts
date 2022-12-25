@@ -72,7 +72,6 @@ export interface FrontMatter {
 
   /**
    * the filename of the page for editing
-   * @deprecated use editableSourceLink instead
    */
   filename?: string;
 

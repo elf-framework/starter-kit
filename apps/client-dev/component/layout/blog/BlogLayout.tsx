@@ -1,13 +1,16 @@
+import { useStoreValue } from "@elf-framework/sapa";
+import type { ContentType } from "@elf-framework/sapa";
 import { Avatar, Badge, Flex } from "@elf-framework/ui";
 
 import "./BlogLayout.scss";
 import { BlogSidebar } from "./BlogSidebar";
 
 import { Logo } from "~/component/Logo";
+import { MobileMenu } from "~/component/MobileMenu";
 import { PageTools } from "~/component/PageTools";
 
 interface BlogLayoutProps {
-  content: any;
+  content?: ContentType;
   date?: string;
   menu?: any[];
   tags?: string[];
@@ -31,6 +34,8 @@ export function BlogLayout({
 }: BlogLayoutProps) {
   logo = logo || <Logo />;
   toolbar = toolbar || <PageTools menu={menu} />;
+
+  const [showMobileMenu] = useStoreValue<boolean>("show.mobile.menu");
 
   return (
     <div class={`blog-layout ${className}`}>
@@ -83,9 +88,9 @@ export function BlogLayout({
                 <div
                   style={{
                     flex: "none",
-                    width: 240,
                     paddingTop: 30,
                     position: "relative",
+                    boxSizing: "border-box",
                   }}
                 >
                   <BlogSidebar />
@@ -95,6 +100,7 @@ export function BlogLayout({
           </div>
         </main>
       </div>
+      {showMobileMenu ? <MobileMenu menu={menu} /> : undefined}
     </div>
   );
 }

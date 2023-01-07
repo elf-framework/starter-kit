@@ -1,5 +1,6 @@
-import { classnames } from "@elf-framework/sapa";
-import { Tools } from "@elf-framework/ui";
+import MenuFilled from "@elf-framework/icon/MenuFilled";
+import { classnames, useSetStoreValue } from "@elf-framework/sapa";
+import { Button } from "@elf-framework/ui";
 
 import "./PageTools.scss";
 import { ThemeButton } from "./utils/theme-button/ThemeButton";
@@ -7,42 +8,21 @@ import { ThemeButton } from "./utils/theme-button/ThemeButton";
 import mainMenus from "~/constants/menu/main-menu";
 
 interface PageToolsProps {
-  menu: any[];
+  menu?: any[];
   showThemeButton?: boolean;
 }
 
-export function PageTools({ menu, showThemeButton = true }: PageToolsProps) {
+export function PageTools({ showThemeButton = true }: PageToolsProps) {
   const pathname = location.pathname;
+
+  const setShowMobileMenu = useSetStoreValue("show.mobile.menu");
 
   return (
     <div class="page-tools">
       <div class="sm">
-        <Tools
-          items={[
-            {
-              type: "menu",
-              title: "Menu",
-              items: [
-                {
-                  type: "item",
-                  title: "Documents",
-                  items: [{ type: "group", title: "Docs" }, ...mainMenus],
-                },
-                "-",
-                ...menu.map((it) => {
-                  if (typeof it === "string") {
-                    return { type: "group", title: it };
-                  }
-                  return {
-                    type: "link",
-                    selected: pathname.startsWith(it.category),
-                    ...it,
-                  };
-                }),
-              ],
-            },
-          ]}
-        />
+        <Button iconOnly quiet onClick={() => setShowMobileMenu(true)}>
+          <MenuFilled />
+        </Button>
       </div>
       <div class="lg">
         <div>

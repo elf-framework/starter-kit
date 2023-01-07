@@ -26,7 +26,7 @@
         width: var(--simple-layout-sidebar-width);
         // overflow-y: auto;
         overflow-x: none;
-        z-index: var(--z-index-header);
+        z-index: 100;
         box-sizing: border-box;
         // padding: 20px 20px;
         background-color: var(--color-background-default);
@@ -58,3 +58,37 @@
         overflow-y: auto;
     }
 }
+
+
+@media (max-width: 770px) {
+
+    .simple-layout {
+        flex-direction: column;
+
+        .layout-menu {
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .tools-area {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px 20px;
+                padding-left: 0px;                
+            }
+
+            .logo-area {
+                flex: 1 1 auto;
+                padding: 10px 20px;
+                padding-right: 0px;
+            }
+
+            .sidebar-area {
+                display: none;
+            }
+        }
+    }
+
+}
+

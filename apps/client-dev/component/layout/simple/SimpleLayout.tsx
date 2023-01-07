@@ -1,3 +1,4 @@
+import { useStoreValue } from "@elf-framework/sapa";
 import type { ContentType } from "@elf-framework/sapa";
 import { makeCssVariablePrefixMap, propertyMap, View } from "@elf-framework/ui";
 
@@ -5,6 +6,7 @@ import "./SimpleLayout.scss";
 
 import { useTheme } from "~/component/hooks/useTheme";
 import { Logo } from "~/component/Logo";
+import { MobileMenu } from "~/component/MobileMenu";
 import { Navigation } from "~/component/Navigation";
 import { PageSelectTools } from "~/component/PageSelectTools";
 import { Body } from "~/component/site/Body";
@@ -15,7 +17,7 @@ const cssProperties = makeCssVariablePrefixMap("--simple-layout", {
 });
 
 interface SimpleLayoutProps {
-  content: ContentType;
+  content?: ContentType;
   menu?: any[];
   logo?: ContentType;
   toolbar?: ContentType;
@@ -42,6 +44,8 @@ export function SimpleLayout({
   toolbar = toolbar || <PageSelectTools menu={menu} />;
   sidebar = sidebar || <Navigation menu={menu} />;
 
+  const [showMobileMenu] = useStoreValue<boolean>("show.mobile.menu");
+
   useTheme();
 
   return (
@@ -63,6 +67,7 @@ export function SimpleLayout({
         {content}
         {/* <Footer /> */}
       </View>
+      {showMobileMenu ? <MobileMenu menu={menu} /> : undefined}
     </div>
   );
 }

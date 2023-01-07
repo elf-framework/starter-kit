@@ -1,3 +1,4 @@
+import { useStoreValue } from "@elf-framework/sapa";
 import type { ContentType } from "@elf-framework/sapa";
 import { Flex } from "@elf-framework/ui";
 
@@ -6,6 +7,7 @@ import "./PageLayout.scss";
 import { Footer } from "~/component/Footer";
 import { useTheme } from "~/component/hooks/useTheme";
 import { Logo } from "~/component/Logo";
+import { MobileMenu } from "~/component/MobileMenu";
 import { PageTools } from "~/component/PageTools";
 
 interface PageLayoutProps {
@@ -31,6 +33,7 @@ export function PageLayout({
   navigator = navigator || "Navigation";
 
   useTheme();
+  const [showMobileMenu] = useStoreValue<boolean>("show.mobile.menu");
 
   return (
     <div class={`page-layout ${className}`}>
@@ -55,6 +58,7 @@ export function PageLayout({
         </main>
       </div>
       <Footer />
+      {showMobileMenu ? <MobileMenu menu={menu} /> : undefined}
     </div>
   );
 }

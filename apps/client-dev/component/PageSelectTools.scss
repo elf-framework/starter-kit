@@ -23,4 +23,33 @@
         }
     }
 
+
+    .sm {
+        display: none;
+    }
+
+    .lg {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+    }
 }
+
+@media (max-width: 770px) {
+
+    .page-select-tools {
+        padding: 0px;
+        justify-content: flex-end;
+        .sm {
+            display: flex;
+            align-items: center;
+        }
+    
+        .lg {
+            display: none;
+        }
+    }
+
+}
+

@@ -1,14 +1,17 @@
+import { useStoreValue } from "@elf-framework/sapa";
+import type { ContentType } from "@elf-framework/sapa";
 import { Flex, View } from "@elf-framework/ui";
 
 import "./DocumentLayout.scss";
 
 import { useTheme } from "~/component/hooks/useTheme";
 import { Logo } from "~/component/Logo";
+import { MobileMenu } from "~/component/MobileMenu";
 import { Navigation } from "~/component/Navigation";
 import { PageTools } from "~/component/PageTools";
 
 interface DocumentLayoutProps {
-  content: any;
+  content?: ContentType;
   menu?: any[];
   logo?: any;
   toolbar?: any;
@@ -30,6 +33,7 @@ export function DocumentLayout({
   sidebar = sidebar || <Navigation menu={menu} />;
 
   useTheme();
+  const [showMobileMenu] = useStoreValue<boolean>("show.mobile.menu");
 
   return (
     <div class={`document-layout layout ${className}`}>
@@ -42,6 +46,7 @@ export function DocumentLayout({
         {content}
         {/* <Footer /> */}
       </View>
+      {showMobileMenu ? <MobileMenu menu={menu} /> : undefined}
     </div>
   );
 }

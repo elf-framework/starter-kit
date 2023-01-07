@@ -1,5 +1,11 @@
 # client-dev
 
+## 1.0.60
+
+### Patch Changes
+
+- support mobile menu
+
 ## 1.0.59
 
 ### Patch Changes

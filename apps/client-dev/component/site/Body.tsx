@@ -3,7 +3,7 @@ import type { ContentType } from "@elf-framework/sapa";
 import "./Body.scss";
 
 interface BodyProps {
-  content: ContentType;
+  content?: ContentType;
 }
 
 export function Body(props: BodyProps) {

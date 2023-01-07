@@ -4,7 +4,7 @@ import { SimpleLayout } from "~/component/layout/simple/SimpleLayout";
 import menu from "~/constants/menu/article-sidebar-menu";
 
 interface ArticleReadLayoutProps {
-  content: ContentType;
+  content?: ContentType;
 }
 
 export function ArticleReadLayout({

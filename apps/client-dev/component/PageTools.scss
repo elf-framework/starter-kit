@@ -50,12 +50,14 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 770px) {
 
     .page-tools {
         padding: 0px;
+        justify-content: flex-end;
         .sm {
-            display: block;
+            display: flex;
+            align-items: center;
         }
     
         .lg {

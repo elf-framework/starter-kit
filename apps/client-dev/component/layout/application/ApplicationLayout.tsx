@@ -1,3 +1,4 @@
+import { useStoreValue } from "@elf-framework/sapa";
 import type { ContentType } from "@elf-framework/sapa";
 import { Flex, View } from "@elf-framework/ui";
 
@@ -5,6 +6,7 @@ import "./ApplicationLayout.scss";
 
 import { useTheme } from "~/component/hooks/useTheme";
 import { Logo } from "~/component/Logo";
+import { MobileMenu } from "~/component/MobileMenu";
 import { Navigation } from "~/component/Navigation";
 import { PageTools } from "~/component/PageTools";
 import { ThemeButton } from "~/component/utils/theme-button/ThemeButton";
@@ -32,16 +34,17 @@ export function ApplicationLayout({
   sidebar = sidebar || <Navigation menu={menu} />;
 
   useTheme();
+  const [showMobileMenu] = useStoreValue<boolean>("show.mobile.menu");
 
   return (
     <div class={`application-layout layout ${className}`}>
       <div class="top">
         <div class="layout-header">
-          <div>
+          <div class="layout-tools">
             <Flex class="layout-logo">{logo}</Flex>
             <Flex class="layout-tools">{toolbar}</Flex>
           </div>
-          <div>
+          <div class="second-tools">
             <ThemeButton />
           </div>
         </div>
@@ -55,6 +58,7 @@ export function ApplicationLayout({
           <View class="layout-menu">{sidebar}</View>
         </div>
       </div>
+      {showMobileMenu ? <MobileMenu menu={menu} /> : undefined}
     </div>
   );
 }

@@ -6,10 +6,9 @@
 
 .page-layout {
     .layout-header {
-        height: 60px;
         display: flex;
         align-items: center;
-        padding: 16px 32px;
+        padding: 10px 20px;
         background-color: var(--color-gray-0);
 
         .layout-tools {
@@ -40,4 +39,16 @@
         }
     }
     
+}
+
+@media (max-width: 770px) {
+    .page-layout {
+        .layout-header {
+
+            .container-lg {
+                padding: 0px;
+            }
+        }
+
+    }
 }

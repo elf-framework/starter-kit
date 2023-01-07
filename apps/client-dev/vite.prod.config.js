@@ -39,6 +39,7 @@ export default defineConfig(async () => {
     root: path.resolve(__dirname, PAGES_DIR),
     build: {
       minify: false,
+      sourcemap: false,
       emptyOutDir: true,
       outDir: path.join(__dirname, "../../docs"),
       rollupOptions: {

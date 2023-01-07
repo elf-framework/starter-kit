@@ -23,7 +23,7 @@
     "@elf-framework/design-system": "^0.0.216",
     "@elf-framework/design-tokens": "^0.0.216",
     "@elf-framework/icon": "^0.0.12",
-    "@elf-framework/sapa": "^0.0.217",
+    "@elf-framework/sapa": "^0.0.218",
     "@elf-framework/ui": "^0.0.216",
     "axios": "^1.2.2",
     "github-markdown-css": "^5.1.0",

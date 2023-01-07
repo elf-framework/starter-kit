@@ -43,6 +43,7 @@ export default defineConfig(async () => {
       emptyOutDir: true,
       outDir: path.join(__dirname, "../../docs"),
       rollupOptions: {
+        cache: false,
         input: {
           // ui: path.resolve(__dirname, "index.html"),
           ...entries,

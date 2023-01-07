@@ -5,19 +5,17 @@ layout: BlogReadLayout
 
 import currentBlogList from '~/data/current-blog-list';
 
-{console.log(currentBlogList)}
-
 <div>
 {currentBlogList.map((blog) => (
     <div>
-        <h2><a href={blog.link}>{blog?.title}</a> &nbsp;
+        <div><a href={blog.link}>{blog?.title}</a> &nbsp;
             {blog.date || blog.createdAt ? 
                 <small style={{color: "var(--color-gray-5)", fontSize: "1rem"}}>
                     {new Intl.DateTimeFormat('en-US').format(new Date(blog?.date || blog?.createdAt))}
                 </small> 
                 : undefined
             }
-        </h2>
+        </div>
         <p>{blog?.summary}</p>
     </div>
 ))}

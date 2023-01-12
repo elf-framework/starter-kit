@@ -35,15 +35,15 @@ The pages directory is the entry point of the application.
 
 ```
 pages
-├── index.jsx
+├── index.tsx
 ├── index.mdx
 ├── index.html
 ├── about
-│   ├── index.jsx
+│   ├── index.tsx
 │   ├── index.mdx
 │   └── index.html
 └── contact
-    ├── index.jsx
+    ├── index.tsx
     ├── index.mdx
     └── index.html
 ```
@@ -58,14 +58,14 @@ Establish the basic structure that makes up the site.
 
 layouts
 ├── items
-│   ├── ApplicationReadLayout.jsx
-│   ├── ApplicationWriteLayout.jsx
-│   ├── BlogLayout.jsx
-│   ├── BlankLayout.jsx
-│   ├── EmbededLayout.jsx
-│   ├── SimpleLayout.jsx
-│   └── SimpleReadLayout.jsx
-└── Site.jsx
+│   ├── ApplicationReadLayout.tsx
+│   ├── ApplicationWriteLayout.tsx
+│   ├── BlogLayout.tsx
+│   ├── BlankLayout.tsx
+│   ├── EmbededLayout.tsx
+│   ├── SimpleLayout.tsx
+│   └── SimpleReadLayout.tsx
+└── LayoutManager.tsx
 ```
 
 ## components
@@ -73,18 +73,24 @@ layouts
 The components directory is the component of the application.
 
 ```
-components
-├── items
-│   ├── ApplicationHeader.jsx
-│   ├── ApplicationMenu.jsx
-│   ├── ApplicationSidebar.jsx
-│   ├── ApplicationTools.jsx
-│   ├── BlogHeader.jsx
-│   ├── BlogMenu.jsx
-│   ├── BlogSidebar.jsx
-│   ├── BlogTools.jsx
-│   ├── BlankHeader.jsx
-│   ├── BlankMenu.jsx
+component
+├── hooks
+│   ├── useScrollStatus.tsx
+│   ├── useTheme.tsx
+├── layout
+│   ├── application
+│   ├── blank
+│   ├── blog
+│   ├── document
+│   ├── embeded
+│   ├── home
+│   ├── page
+│   ├── simple
+├── site
+│   ├── Header.tsx
+│   ├── Body.tsx
+├── utils
+
 
 ```
 
@@ -152,13 +158,13 @@ Create and use xxx.html based on pages directory.
 If there is index.html in a specific directory, it is used directly as an entry.
 
 
-### xxxx.jsx file 
+### xxxx.tsx file 
 
 ```
-/directory/index.jsx 
+/directory/index.tsx 
 ```
 
-If there are only jsx files in a specific directory, create an html file with the same name and use it as an entry.
+If there are only tsx files in a specific directory, create an html file with the same name and use it as an entry.
 
 ### xxxx.mdx file 
 
@@ -166,16 +172,16 @@ If there are only jsx files in a specific directory, create an html file with th
 /directory/index.mdx
 ```
 
-If there is only mdx file in a specific directory, create html and jsx files with the same name and use them as entry.
+If there is only mdx file in a specific directory, create html and tsx files with the same name and use them as entry.
 
 
 # How to make auto generate pages
 
-Automatically updates additional files when creating xxx.page.jsx and xxx.mdx files based on the pages directory.
+Automatically updates additional files when creating xxx.page.tsx and xxx.mdx files based on the pages directory.
 
 ## create xxx.mdx file 
 
-mdx file is a format that allows you to use markdown and jsx syntax together.
+mdx file is a format that allows you to use markdown and tsx syntax together.
 
 At the moment of creation, a total of three additional information files are created.
 
@@ -184,25 +190,25 @@ At the moment of creation, a total of three additional information files are cre
 /directory/index.mdx
 
 # auto generate
-/directory/index.jsx
+/directory/index.tsx
 /directory/index.html
 /directory/index.meta.json
 ```
 
-## create xxx.page.jsx file
+## create xxx.page.tsx file
 
-page.jsx file is a format that allows you to use jsx syntax.
+page.tsx file is a format that allows you to use tsx syntax.
 
-It is useful when creating a view page with jsx syntax.
+It is useful when creating a view page with tsx syntax.
 
 At the moment of creation, a total of two additional information files are created.
 
 ```sh
 # user create or update
-/directory/index.page.jsx
+/directory/index.page.tsx
 
 # auto generate
-/directory/index.jsx
+/directory/index.tsx
 /directory/index.html
 /directory/index.meta.json
 ```
@@ -245,6 +251,8 @@ The predefined layout based on the path is in the file below.
  */
 export const layouts = {
   "pages/article": "ArticleReadLayout",
+  "pages/dashboard": "DashboardReadLayout",
+  "pages/markdown": "MarkdownReadLayout",
   "pages/blog": "BlogReadLayout",
   "pages/main": "HomeLayout",
   "pages/document": "DocumentReadLayout",
@@ -261,7 +269,7 @@ LayoutManagers are managed in /layouts/LayoutManager.js file.
 If you specify a layout in /layouts/items/ in the form below, it is automatically loaded in LayoutManager.
 
 ```sh
-/layouts/items/ArticleReadLayout.jsx
+/layouts/items/ArticleReadLayout.tsx
 ```
 
 # Contribute

@@ -7,6 +7,8 @@ import fm from "front-matter";
 import { existsSync, readFileSync, unlinkSync, writeFileSync } from "fs";
 import path, { basename, dirname, extname } from "path";
 
+const DEFAULT_LAYOUT = "BlankReadLayout";
+
 export function writeContent(file, content, replaceMap = {}) {
   Object.keys(replaceMap).forEach((key) => {
     const value = replaceMap[key];
@@ -138,7 +140,7 @@ export function makeMetaTags({ title, meta: metaResult = {} }) {
 }
 
 export function getLayoutByPath(layouts, entryRelativeFileName) {
-  let layout = "BlankLayout"; // default layout
+  let layout = DEFAULT_LAYOUT; // default layout
   Object.entries(layouts).forEach(([key, value]) => {
     if (entryRelativeFileName.startsWith(key)) {
       layout = value;

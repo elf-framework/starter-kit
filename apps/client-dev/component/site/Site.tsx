@@ -21,7 +21,7 @@ export function Site({
   header,
   ...props
 }: SiteProps) {
-  const CurrentLayout = LayoutManager.get(layout || "BasicLayout");
+  const CurrentLayout = LayoutManager.get(layout || "BlankReadLayout");
 
   if (!CurrentLayout) {
     return <div>Layout not found</div>;

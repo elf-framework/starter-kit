@@ -20,11 +20,11 @@
   "license": "ISC",
   "dependencies": {
     "@elf-framework/color": "^0.0.216",
-    "@elf-framework/design-system": "^0.0.216",
-    "@elf-framework/design-tokens": "^0.0.216",
+    "@elf-framework/design-system": "^0.0.233",
+    "@elf-framework/design-tokens": "^0.0.233",
     "@elf-framework/icon": "^0.0.12",
-    "@elf-framework/sapa": "^0.0.218",
-    "@elf-framework/ui": "^0.0.216",
+    "@elf-framework/sapa": "^0.0.231",
+    "@elf-framework/ui": "^0.0.233",
     "axios": "^1.2.2",
     "github-markdown-css": "^5.1.0",
     "mermaid": "^9.3.0"
@@ -53,6 +53,6 @@
     "vite": "^4.0.4",
     "vite-plugin-sapa": "^0.0.216",
     "vite-plugin-ssr": "^0.4.69",
-    "vitest": "0.26.3"
+    "vitest": "0.27.1"
   }
 }

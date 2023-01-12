@@ -35,6 +35,6 @@
     "vite-plugin-mdx": "^3.5.11",
     "vite-plugin-sapa": "*",
     "vite-plugin-ssr": "^0.4.69",
-    "vitest": "0.26.3"
+    "vitest": "0.27.1"
   }
 }

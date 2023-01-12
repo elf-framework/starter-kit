@@ -10,7 +10,7 @@ const cssProperties = makeCssVariablePrefixMap("--blank-layout", {
 });
 
 interface BlankLayoutProps {
-  content: ContentType;
+  content?: ContentType;
   style?: any;
 }
 
@@ -19,9 +19,7 @@ export function BlankLayout({ content, style = {} }: BlankLayoutProps) {
 
   return (
     <div class="blank-layout" style={propertyMap(style, cssProperties)}>
-      <View class="layout-content">
-        <div class="container-lg">{content}</div>
-      </View>
+      {content}
     </div>
   );
 }

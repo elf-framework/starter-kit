@@ -1,6 +1,9 @@
 {
-    "createdAt": 1671083967755,
+    "createdAt": 1684346381583,
     "title": "Feature Page",
     "layout": "PageReadLayout",
-    "updatedAt": 1671525026013
+    "updatedAt": 1684346381583,
+    "summary": "일반적인 기능 페이지는 여기서 작성해주세요. 소개 페이지 또는 기능 소개 페이지 등을 작성할 수 있습니다.",
+    "links": [],
+    "body": "일반적인 기능 페이지는 여기서 작성해주세요.\n\n소개 페이지 또는 기능 소개 페이지 등을 작성할 수 있습니다.\n"
 }

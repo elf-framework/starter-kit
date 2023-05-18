@@ -80,3 +80,30 @@ export interface FrontMatter {
    */
   tableOfContents?: boolean;
 }
+
+type Prettify<T> = {
+  [K in keyof T]: Prettify<T[K]>;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+} & {};
+
+type Interested = {
+  a: string;
+} & {
+  b: string;
+} & {
+  c: string;
+  d: {
+    e: string;
+  } & {
+    f: string;
+  };
+};
+
+export type result = Prettify<Interested>;
+
+export type identity<T> = T;
+export type flatten<T> = identity<{
+  [K in keyof T]: T[K];
+}>;
+
+export type result2 = flatten<Interested>;

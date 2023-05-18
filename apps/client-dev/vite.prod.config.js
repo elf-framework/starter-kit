@@ -57,19 +57,22 @@ export default defineConfig(async () => {
       extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", "md", "mdx"],
     },
     plugins: [
-      mdx({
-        jsxRuntime: "classic",
-        pragma: "sapa.createElementJsx",
-        pragmaFrag: "sapa.FragmentInstance",
-        pragmaImportSource: "@elf-framework/sapa",
-        remarkPlugins: [
-          remarkGfm,
-          remarkFrontmatter,
-          remarkMdxFrontmatter,
-          remarkMermaidDataurl,
-        ],
-        rehypePlugins: [rehypePrism, rehypePrismPlus],
-      }),
+      {
+        enforce: "pre",
+        ...mdx({
+          jsxRuntime: "classic",
+          pragma: "sapa.createElementJsx",
+          pragmaFrag: "sapa.FragmentInstance",
+          pragmaImportSource: "@elf-framework/sapa",
+          remarkPlugins: [
+            remarkGfm,
+            remarkFrontmatter,
+            remarkMdxFrontmatter,
+            remarkMermaidDataurl,
+          ],
+          rehypePlugins: [rehypePrism, rehypePrismPlus],
+        }),
+      },
     ],
   };
 });
